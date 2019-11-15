@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Minigolf</string>
+
+    <!-- activity_auth -->
+    <string name="hint_username">Nom d\'utilisateur</string>
+    <string name="error_empty_field">Veuillez compléter ce champ.</string>
+    <string name="btn_login">Se connecter</string>
+    <string name="tabItem_list">Liste</string>
+    <string name="tabItem_graph">Graphique</string>
+    <string name="et_password">Mot de passe</string>
+    <plurals name="nb_of_points">
+        <item quantity="one">%1d Point</item>
+        <item quantity="other">%1d Points</item>
+    </plurals>
+
+    <!-- fragment_list -->
+
+
+    <!-- fragment_chart -->
+
 </resources>
