@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="barchart">#00ff00</color>
+    <color name="barchart">@color/design_default_color_primary</color>
     <color name="lightGrey">#eeeeee</color>
 </resources>
