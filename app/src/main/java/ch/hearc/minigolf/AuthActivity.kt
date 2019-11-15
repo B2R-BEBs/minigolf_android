@@ -38,14 +38,17 @@ class AuthActivity : AppCompatActivity() {
     private fun startHomeActivity() {
         if (checkInputs()) {
 
-            Log.i(TAG, "Inputs OK")
+            Log.d(TAG, "Inputs OK")
 
-            checkAuth(
-                textInputLayoutUsername.editText!!.text.toString(),
-                textInputLayoutPassword.editText!!.text.toString()
-            )
+            if (checkAuth(
+                    textInputLayoutUsername.editText!!.text.toString(),
+                    textInputLayoutPassword.editText!!.text.toString()
+                )
+            ) {
+                startActivity(intentHome)
+            }
 
-            startActivity(intentHome)
+
         }
     }
 
@@ -65,11 +68,8 @@ class AuthActivity : AppCompatActivity() {
         return isInputOk
     }
 
-    private fun checkAuth(username: String, password: String) {
-        runBlocking() {
-            val (request, response, result) = Fuel.get("https://httpbin.org/json").awaitStringResponse()
-            Log.i(TAG, response.statusCode.toString())
-            Log.i(TAG, result)
-        }
+    private fun checkAuth(username: String, password: String): Boolean {
+        // TODO : Check authentification with Fuel Library and Coroutines
+        return true
     }
 }

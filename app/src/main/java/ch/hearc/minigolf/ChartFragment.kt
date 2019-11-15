@@ -15,17 +15,17 @@ import com.github.mikephil.charting.data.BarEntry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import kotlin.random.Random
 
 class ChartFragment : Fragment() {
 
-    private lateinit var chart : BarChart
+    private lateinit var chart: BarChart
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val inflaterGraph = inflater.inflate(R.layout.fragment_chart, container, false)
-
 
         setChart()
 
@@ -38,15 +38,12 @@ class ChartFragment : Fragment() {
 
         chart = BarChart(activity)
 
-        val entries : MutableList<BarEntry> = mutableListOf()
-        lateinit var scores : List<Score>
-        runBlocking {
-            scores = withContext(Dispatchers.Default) {
-                MinigolfDatabase.getDatabase(activity!!.applicationContext).scoreDao().selectAll()
-            }
-        }
+        val entries: MutableList<BarEntry> = mutableListOf()
 
-        scores.forEachIndexed { i, score -> entries.add(BarEntry(i.toFloat(), score.score.toFloat())) }
+        // TODO : replace this fake data
+        for (i in 1..10) {
+            entries.add(BarEntry(i.toFloat(), Random.nextInt(40,60).toFloat()))
+        }
 
         val dataSet = BarDataSet(entries, "Scores")
         dataSet.setColors(intArrayOf(R.color.barchart), context)
