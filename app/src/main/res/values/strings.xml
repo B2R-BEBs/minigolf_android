@@ -8,12 +8,15 @@
     <string name="tabItem_list">Liste</string>
     <string name="tabItem_graph">Graphique</string>
     <string name="et_password">Mot de passe</string>
+    <string name="minigolf_name">Nom du minigolf</string>
+    <string name="minigolf_course_name">Nom de la course</string>
+    <string name="create_party">Créer une partie</string>
     <plurals name="nb_of_points">
         <item quantity="one">%1d Point</item>
         <item quantity="other">%1d Points</item>
     </plurals>
 
-    <!-- fragment_list -->
+    <!-- fragment_list_results -->
 
 
     <!-- fragment_chart -->

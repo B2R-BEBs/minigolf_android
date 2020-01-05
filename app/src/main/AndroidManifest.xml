@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Material"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".CreatePartyActivity" />
+        <activity android:name=".JoinPartyActivity" />
+        <activity android:name=".ResultActivity" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

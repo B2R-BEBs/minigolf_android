@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TableLayout
+        android:id="@+id/zone_A"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TableLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/zone_B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/zone_A">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TableLayout>
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:id="@+id/zone_C"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/zone_A">
+
+
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/zone_D"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/zone_A"
+        android:layout_toEndOf="@id/zone_C">
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </HorizontalScrollView>
+    </ScrollView>
+
+</RelativeLayout>

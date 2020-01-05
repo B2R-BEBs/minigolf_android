@@ -62,6 +62,4 @@ dependencies {
     implementation 'com.github.kittinunf.fuel:fuel-coroutines:2.2.0'
     implementation 'com.github.kittinunf.fuel:fuel-livedata:2.2.0'
     implementation 'com.github.kittinunf.fuel:fuel-gson:2.2.0'
-
-
 }

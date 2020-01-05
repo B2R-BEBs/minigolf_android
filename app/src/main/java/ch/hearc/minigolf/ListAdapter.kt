@@ -3,16 +3,17 @@ package ch.hearc.minigolf
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.data.Score
 import java.text.DateFormat
-import java.text.SimpleDateFormat
 
 class ListAdapter(val scores: List<Score>, val itemClickListener: View.OnClickListener) :
     RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val linearLayout: LinearLayout = itemView.findViewById(R.id.ll_item)
         val dateView: TextView = itemView.findViewById(R.id.tv_date)
         val locationView: TextView = itemView.findViewById(R.id.tv_location)
         val scoreView: TextView = itemView.findViewById(R.id.tv_score)
@@ -20,7 +21,7 @@ class ListAdapter(val scores: List<Score>, val itemClickListener: View.OnClickLi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.list_results_item, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -35,6 +36,7 @@ class ListAdapter(val scores: List<Score>, val itemClickListener: View.OnClickLi
             score.score,
             score.score
         )
+        holder.linearLayout.setOnClickListener(itemClickListener)
     }
 
     override fun getItemCount(): Int = scores.size
