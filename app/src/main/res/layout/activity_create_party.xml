@@ -12,7 +12,6 @@
 
     tools:context=".CreatePartyActivity">
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_minigolf_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"

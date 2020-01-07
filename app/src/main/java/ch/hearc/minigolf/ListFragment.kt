@@ -28,7 +28,7 @@ class ListFragment : Fragment() {
     ): View? {
 
         val inflaterList = inflater.inflate(R.layout.fragment_list_results, container, false)
-        recyclerView = inflaterList.findViewById<RecyclerView>(R.id.rv_list)
+        recyclerView = inflaterList.findViewById<RecyclerView>(R.id.rv_list_result)
         val floatingButton =
             inflaterList.findViewById<FloatingActionButton>(R.id.fab_join)
 
@@ -57,8 +57,6 @@ class ListFragment : Fragment() {
         scores.add(getFakeScore())
         recyclerView.adapter?.notifyItemInserted(scores.lastIndex)
     }
-
-
 }
 
 
