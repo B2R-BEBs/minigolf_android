@@ -1,9 +1,10 @@
-package ch.hearc.minigolf
+package ch.hearc.minigolf.gui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
+import ch.hearc.minigolf.R
+import ch.hearc.minigolf.ResultTable
 
 class ResultActivity : AppCompatActivity() {
 

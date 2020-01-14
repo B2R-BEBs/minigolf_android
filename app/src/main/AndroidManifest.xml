@@ -12,11 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Material"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".CreatePartyActivity" />
-        <activity android:name=".JoinPartyActivity" />
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".AuthActivity">
+        <activity android:name=".gui.GameInProgressActivity"></activity>
+        <activity android:name=".gui.RoomActivity" />
+        <activity android:name=".gui.CreateGameActivity" />
+        <activity android:name=".gui.JoinGameActivity" />
+        <activity android:name=".gui.ResultActivity" />
+        <activity android:name=".gui.HomeActivity" />
+        <activity android:name=".gui.AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

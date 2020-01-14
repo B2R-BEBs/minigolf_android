@@ -1,4 +1,4 @@
-package ch.hearc.minigolf
+package ch.hearc.minigolf.gui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,15 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
-import ch.hearc.minigolf.data.MinigolfDatabase
-import ch.hearc.minigolf.data.Score
+import ch.hearc.minigolf.R
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import kotlin.random.Random
 
 class ChartFragment : Fragment() {

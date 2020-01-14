@@ -7,6 +7,7 @@
     android:layout_marginLeft="@dimen/mtrl_card_spacing"
     android:layout_marginTop="@dimen/mtrl_card_spacing"
     android:layout_marginRight="@dimen/mtrl_card_spacing"
+    android:checkable="true"
     tools:ignore="PrivateResource">
 
     <RelativeLayout
@@ -16,35 +17,32 @@
         android:layout_margin="@dimen/cardview_padding">
 
         <TextView
-            android:id="@+id/tv_score"
+            android:id="@+id/tv_nb_holes"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:gravity="center_vertical"
-            tools:text="56 Points" />
+            tools:text="18 trous" />
 
         <TextView
-            android:id="@+id/tv_date"
+            android:id="@+id/tv_course_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_toStartOf="@id/tv_score"
-            tools:text="12 nov. 2019" />
+            tools:text="Paulette"
+            android:textStyle="bold"
+            android:layout_toStartOf="@id/tv_nb_holes"
+            />
 
         <TextView
-            android:id="@+id/tv_location"
+            android:id="@+id/tv_course_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_date"
-            android:layout_toStartOf="@id/tv_score"
-            android:layout_marginEnd="10dp"
-
-            tools:text="Neuchâtel, Quai Robert-Comtesse 4" />
-
-
+            tools:text="Laboriosam dolores ab aspernatur dignissimos corrupti in optio. Ab vero qui maiores autem voluptas a quia. "
+            android:layout_below="@id/tv_course_name"
+            android:layout_toStartOf="@id/tv_nb_holes"
+            />
     </RelativeLayout>
-
 </com.google.android.material.card.MaterialCardView>

@@ -5,14 +5,15 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
-    android:padding="@dimen/main_padding"
+    tools:context=".gui.HomeActivity"
     >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_list_result"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:listitem="@layout/list_results_item"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_join"
