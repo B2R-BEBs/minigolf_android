@@ -1,16 +1,21 @@
 package ch.hearc.minigolf
 
+import android.content.AsyncQueryHandler
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import ch.hearc.minigolf.data.api.Api
 import com.github.kittinunf.fuel.Fuel
-import com.github.kittinunf.fuel.coroutines.awaitObjectResponse
+import com.github.kittinunf.fuel.core.FuelManager
 import com.github.kittinunf.fuel.coroutines.awaitStringResponse
-import com.github.kittinunf.fuel.coroutines.awaitStringResponseResult
+import com.github.kittinunf.fuel.httpPost
+import com.github.kittinunf.result.Result;
 import com.google.android.material.textfield.TextInputLayout
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlin.math.log
 
 class AuthActivity : AppCompatActivity() {
 
@@ -45,7 +50,7 @@ class AuthActivity : AppCompatActivity() {
                     textInputLayoutPassword.editText!!.text.toString()
                 )
             ) {
-                startActivity(intentHome)
+//                startActivity(intentHome)
             }
 
 
@@ -69,7 +74,42 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun checkAuth(username: String, password: String): Boolean {
-        // TODO : Check authentification with Fuel Library and Coroutines
-        return true
+        val BASE_URL = "https://swiped.srvz-webapp.he-arc.ch/api/"
+        val bodyJson = """ { "email": "${username}", "password": "${password}" } """
+
+        GlobalScope.launch {
+            FuelManager.instance.basePath = "https://swiped.srvz-webapp.he-arc.ch"
+            var token = ""
+            val login = Fuel.post("/api/auth/login")
+                .body(bodyJson)
+                login.appendHeader("Content-Type", "application/json; utf-8; */*")
+                login.responseString{request, response, result ->
+                    when(result) {
+                        is Result.Success -> {
+                            token = result.get().removePrefix("{\"token\":\"").removeSuffix("\"}")
+                            Log.d("TOKEN", "${token}")
+
+                        }
+                        is Result.Failure -> {Log.d("TOKEN", "RESULT : ${response.responseMessage}")}
+                        }
+                    }
+                val userRequest = Fuel.get("/api/users/profile")
+                Log.d("TOKEN", "RESULT : ${token}")
+                Thread.sleep(1000)
+                userRequest.appendHeader("authorization", "Bearer ${token}")
+                userRequest.responseString{request, response, result ->
+                    Log.d("TOKEN", "RESULT : ${request}")
+                    when(result) {
+
+                        is Result.Success -> {
+                            Log.d("TOKEN", "RESULT : ${result.get()}")
+                        }
+                        is Result.Failure -> {Log.d("TOKEN", "RESULT : ${response.responseMessage}")}
+                        }
+                    }
+                }
+
+
+        return false
+        }
     }
-}
