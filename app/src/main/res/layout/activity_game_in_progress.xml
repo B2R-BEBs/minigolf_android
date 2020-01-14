@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/main_padding"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    tools:context=".gui.GameInProgressActivity">
+
+    <TextView
+        android:id="@+id/tv_next_turn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_next_turn"
+        android:textSize="@dimen/title" />
+
+    <TextView
+        android:id="@+id/tv_nb_next_turn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_next_turn"
+        android:textSize="@dimen/title"
+        tools:text="3 Personnes"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/tv_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_nb_next_turn"
+        android:text="@string/tv_score"
+        android:textSize="@dimen/title" />
+
+    <NumberPicker
+        android:id="@+id/np_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_score" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_set_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/np_score"
+        android:text="@string/btn_set_score"
+        tools:ignore="RtlHardcoded" />
+
+</RelativeLayout>

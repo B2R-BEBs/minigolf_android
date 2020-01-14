@@ -1,16 +1,12 @@
-package ch.hearc.minigolf
+package ch.hearc.minigolf.gui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import com.github.kittinunf.fuel.Fuel
-import com.github.kittinunf.fuel.coroutines.awaitObjectResponse
-import com.github.kittinunf.fuel.coroutines.awaitStringResponse
-import com.github.kittinunf.fuel.coroutines.awaitStringResponseResult
+import androidx.appcompat.app.AppCompatActivity
+import ch.hearc.minigolf.R
 import com.google.android.material.textfield.TextInputLayout
-import kotlinx.coroutines.runBlocking
 
 class AuthActivity : AppCompatActivity() {
 
