@@ -1,14 +1,21 @@
 package ch.hearc.minigolf.gui
 
 import android.os.Bundle
+import android.os.Debug
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import ch.hearc.minigolf.gui.fragment.GamesFragment
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.gui.fragment.ChartFragment
+import ch.hearc.minigolf.ui.games.GamesViewModel
+import ch.hearc.minigolf.utilities.InjectorUtils
 import com.google.android.material.tabs.TabLayout
+import java.lang.StringBuilder
 
 class HomeActivity : AppCompatActivity() {
 
@@ -25,6 +32,16 @@ class HomeActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+
+        val factory = InjectorUtils.provideGamesViewModelFactory()
+        val viewModel = ViewModelProviders.of(this, factory)
+            .get(GamesViewModel::class.java)
+
+        viewModel.getGames().observe(this, Observer {
+            Log.d("TEST", it.joinToString("\n"))
+        })
+
 
         viewPager = findViewById(R.id.vp_home)
 

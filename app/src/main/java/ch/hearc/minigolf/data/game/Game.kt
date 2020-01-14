@@ -1,5 +1,7 @@
 package ch.hearc.minigolf.data.game
 
+import java.util.*
+
 //data class Game (
 //    val id: Int,
 //    val creator: Player,
@@ -13,6 +15,14 @@ package ch.hearc.minigolf.data.game
 //}
 
 data class Game(
-    val id: Int,
-    val name: String
-)
+    val hole : Int,
+    val score : Int,
+    val date: Date,
+    val location: String
+
+
+) {
+    override fun toString(): String {
+        return "Game(score=$score, location='$location')"
+    }
+}
