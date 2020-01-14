@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.gui.ResultActivity
-import ch.hearc.minigolf.data.Score
+import ch.hearc.minigolf.data.score.Score
 import ch.hearc.minigolf.gui.JoinGameActivity
-import ch.hearc.minigolf.gui.adapter.ListResultAdapter
+import ch.hearc.minigolf.gui.adapter.GamesAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
 import kotlin.random.Random
 
-class ListResultFragment : Fragment() {
+class GamesFragment : Fragment() {
 
     lateinit var recyclerView: RecyclerView
     private var scores = mutableListOf<Score>()
@@ -43,7 +43,7 @@ class ListResultFragment : Fragment() {
         setScores(10)
 
         recyclerView.adapter =
-            ListResultAdapter(
+            GamesAdapter(
                 scores,
                 View.OnClickListener { startActivity(intentResult) })
 
@@ -51,18 +51,15 @@ class ListResultFragment : Fragment() {
     }
 
     fun setScores(nb: Int) {
-        for (i in 1..nb) {
-            scores.add(getFakeScore())
-        }
+        scores.addAll((1..nb).map { getFakeScore(it) })
         recyclerView.adapter?.notifyDataSetChanged()
+//        for (i in 1..nb) {
+//            scores.add(getFakeScore())
+//        }
     }
 
-    fun getFakeScore() : Score = Score(Random.nextInt(40, 60), "Neuchâtel, Quai Robert-Comtesse 4", Date())
-
-    fun addScore() {
-        scores.add(getFakeScore())
-        recyclerView.adapter?.notifyItemInserted(scores.lastIndex)
-    }
+    fun getFakeScore(i: Int) : Score =
+        Score(i, Random.nextInt(40, 60), Date(), "Neuchatel")
 }
 
 

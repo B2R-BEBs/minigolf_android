@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import ch.hearc.minigolf.gui.fragment.ListResultFragment
+import ch.hearc.minigolf.gui.fragment.GamesFragment
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.gui.fragment.ChartFragment
 import com.google.android.material.tabs.TabLayout
@@ -18,8 +18,8 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var viewPager: ViewPager
     private lateinit var tabLayout: TabLayout
-    private lateinit var listFragment1: ListResultFragment
-    private lateinit var listFragment2: ListResultFragment
+    private lateinit var listFragment1: GamesFragment
+    private lateinit var listFragment2: GamesFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -31,14 +31,14 @@ class HomeActivity : AppCompatActivity() {
         tabLayout = findViewById(R.id.tl_home)
         tabLayout.setupWithViewPager(viewPager)
 
-        listFragment1 = ListResultFragment()
-        listFragment2 = ListResultFragment()
+        listFragment1 = GamesFragment()
+        listFragment2 = GamesFragment()
 
         viewPager.adapter = object :
             FragmentPagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
             override fun getItem(position: Int): Fragment =
-                if (position == 0) ListResultFragment() else ChartFragment()
+                if (position == 0) GamesFragment() else ChartFragment()
 
 
             override fun getCount(): Int =

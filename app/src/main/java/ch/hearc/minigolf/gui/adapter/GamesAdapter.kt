@@ -7,12 +7,12 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
-import ch.hearc.minigolf.data.Score
+import ch.hearc.minigolf.data.score.Score
 import java.text.DateFormat
 
-class ListResultAdapter(val scores: List<Score>,
-                        val itemClickListener: View.OnClickListener) :
-    RecyclerView.Adapter<ListResultAdapter.ViewHolder>() {
+class GamesAdapter(val scores: List<Score>,
+                   val itemClickListener: View.OnClickListener) :
+    RecyclerView.Adapter<GamesAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val relativeLayout: RelativeLayout = itemView.findViewById(R.id.rl_item_results)
