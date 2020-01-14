@@ -10,7 +10,8 @@ import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.Score
 import java.text.DateFormat
 
-class ListResultAdapter(val scores: List<Score>, val itemClickListener: View.OnClickListener) :
+class ListResultAdapter(val scores: List<Score>,
+                        val itemClickListener: View.OnClickListener) :
     RecyclerView.Adapter<ListResultAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -21,8 +22,9 @@ class ListResultAdapter(val scores: List<Score>, val itemClickListener: View.OnC
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.list_results_item, parent, false)
+        val itemView = LayoutInflater
+            .from(parent.context)
+            .inflate(R.layout.list_results_item, parent, false)
         return ViewHolder(
             itemView
         )
@@ -32,7 +34,9 @@ class ListResultAdapter(val scores: List<Score>, val itemClickListener: View.OnC
 
         val score = scores[position]
 
-        holder.dateView.text = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(score.date)
+        holder.dateView.text = DateFormat
+            .getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT)
+            .format(score.date)
         holder.locationView.text = score.location
         holder.scoreView.text = holder.dateView.context.resources.getQuantityString(
             R.plurals.nb_of_points,
