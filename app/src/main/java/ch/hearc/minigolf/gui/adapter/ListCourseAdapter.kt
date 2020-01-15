@@ -1,24 +1,18 @@
 package ch.hearc.minigolf.gui.adapter
 
-import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.Course
-import ch.hearc.minigolf.data.Score
-import java.text.DateFormat
 
 class ListCourseAdapter(val itemClickListener: OnItemClickListener) :
     RecyclerView.Adapter<ListCourseAdapter.ViewHolder>() {
 
     private var courses = emptyList<Course>()
-    private var lastCheckPos = 0
 
     init {
         setHasStableIds(true)
@@ -39,7 +33,6 @@ class ListCourseAdapter(val itemClickListener: OnItemClickListener) :
             item.setOnClickListener {
                 clickListener.onItemClicked(course)
             }
-
         }
     }
 
@@ -52,18 +45,6 @@ class ListCourseAdapter(val itemClickListener: OnItemClickListener) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val course = courses[position]
         holder.bind(course, itemClickListener)
-
-        /*
-        holder.name.text = course.name
-        holder.desc.text = course.desc
-        holder.nbHoles.text = holder.nbHoles.context.resources.getQuantityString(
-            R.plurals.nb_of_holes,
-            course.nbHoles,
-            course.nbHoles
-        )
-        holder.item.setOnClickListener(itemClickListener)
-
-         */
     }
 
     internal fun setCourses(courses: List<Course>) {

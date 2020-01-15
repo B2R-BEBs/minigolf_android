@@ -41,7 +41,7 @@ class AuthActivity : AppCompatActivity() {
                     textInputLayoutPassword.editText!!.text.toString()
                 )
             ) {
-//                startActivity(intentHome)
+                startActivity(intentHome)
             }
 
 

@@ -17,14 +17,13 @@
         <activity android:name=".gui.CreateGameActivity" />
         <activity android:name=".gui.JoinGameActivity" />
         <activity android:name=".gui.ResultActivity" />
-        <activity android:name=".gui.HomeActivity" />
-        <activity android:name=".gui.AuthActivity">
+        <activity android:name=".gui.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".gui.AuthActivity"></activity>
     </application>
 
 </manifest>

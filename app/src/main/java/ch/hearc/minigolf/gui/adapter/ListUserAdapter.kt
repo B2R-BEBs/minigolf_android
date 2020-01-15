@@ -7,7 +7,6 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
-import ch.hearc.minigolf.data.Score
 import ch.hearc.minigolf.data.User
 import java.text.DateFormat
 

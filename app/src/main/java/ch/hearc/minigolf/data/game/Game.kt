@@ -19,8 +19,6 @@ data class Game(
     val score : Int,
     val date: Date,
     val location: String
-
-
 ) {
     override fun toString(): String {
         return "Game(score=$score, location='$location')"
