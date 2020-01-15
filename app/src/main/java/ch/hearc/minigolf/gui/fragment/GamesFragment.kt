@@ -56,8 +56,6 @@ class GamesFragment : Fragment(), OnGameClickListener {
         val viewModel = ViewModelProviders.of(this, factory)
             .get(GamesViewModel::class.java)
 
-        Log.d("TEST", "ici")
-
         viewModel.getGames().observe(
             this,
             androidx.lifecycle.Observer { games ->

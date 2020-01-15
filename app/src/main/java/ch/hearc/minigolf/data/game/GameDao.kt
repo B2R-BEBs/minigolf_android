@@ -3,13 +3,11 @@ package ch.hearc.minigolf.data.game
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ch.hearc.minigolf.utilities.DeserializerUtils
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.FuelManager
 
 class GameDao {
-
-    // var datas : Data? = null
-    // private val gamesList = fakeGames
     private val games = MutableLiveData<Array<Game>>()
 
     init {
@@ -19,33 +17,11 @@ class GameDao {
 
     fun getGames() : LiveData<Array<Game>> {
         Fuel.get("/api/app/games/10")
-            .responseObject(Game.Deserializer()){ request, response, result ->
+            .responseObject(DeserializerUtils.Deserializer()){ request, response, result ->
                 val (data, err) = result
-                // Correct response
-                Log.d("TEST", response.toString())
-
-                // Issue on deserialization
-                Log.d("TEST", err.toString())
-                games.value = data
+                Log.d("TEST", result.toString())
+                games.value = data?.data
             }
         return games
     }
-
-
-    // private val gamesList = fakeGames
-    // private val games = MutableLiveData<List<Game>>()
-    //
-    // init {
-    //     games.value = gamesList
-    // }
-    //
-    // fun addGame(game: Game) {
-    //     // Update dataSource
-    //     gamesList.add(game)
-    //     // update liveData
-    //     games.value = gamesList
-    // }
-    //
-    // fun getGames() = games as LiveData<List<Game>>
-
 }

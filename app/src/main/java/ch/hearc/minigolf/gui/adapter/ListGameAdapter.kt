@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.game.Game
-import java.text.DateFormat
 
 class ListGameAdapter(val itemClickListener: OnGameClickListener) :
     RecyclerView.Adapter<ListGameAdapter.ViewHolder>() {
@@ -23,9 +22,12 @@ class ListGameAdapter(val itemClickListener: OnGameClickListener) :
         val score: TextView = itemView.findViewById(R.id.tv_score)
 
         fun bind(game: Game, clickListener: OnGameClickListener) {
-            date.text = DateFormat
-                .getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT)
-                .format(game.date)
+
+            // // Date is a string not a proper date just use it as it is.
+            // date.text = DateFormat
+            //     .getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT)
+            //     .format(game.date)
+
             location.text = game.minigolf
             item.setOnClickListener {
                 clickListener.onGameClicked(game)
