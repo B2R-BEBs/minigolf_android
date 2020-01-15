@@ -1,4 +1,4 @@
-package ch.hearc.minigolf.ui.games
+package ch.hearc.minigolf.gui.games
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

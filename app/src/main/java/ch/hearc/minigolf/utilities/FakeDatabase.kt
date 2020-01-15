@@ -1,4 +1,4 @@
-package ch.hearc.minigolf
+package ch.hearc.minigolf.utilities
 
 import ch.hearc.minigolf.data.game.GameDao
 
@@ -10,7 +10,8 @@ class FakeDatabase private constructor() {
         @Volatile private var instance: FakeDatabase? = null
 
         fun getInstance() = instance ?: synchronized(this) {
-            instance ?: FakeDatabase().also { instance = it }
+            instance
+                ?: FakeDatabase().also { instance = it }
         }
     }
 }

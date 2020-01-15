@@ -17,7 +17,7 @@ import ch.hearc.minigolf.gui.ResultActivity
 import ch.hearc.minigolf.gui.JoinGameActivity
 import ch.hearc.minigolf.gui.adapter.ListGameAdapter
 import ch.hearc.minigolf.gui.adapter.OnGameClickListener
-import ch.hearc.minigolf.ui.games.GamesViewModel
+import ch.hearc.minigolf.gui.games.GamesViewModel
 import ch.hearc.minigolf.utilities.InjectorUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 

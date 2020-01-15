@@ -1,4 +1,4 @@
-package ch.hearc.minigolf
+package ch.hearc.minigolf.utilities
 
 import android.app.DownloadManager
 

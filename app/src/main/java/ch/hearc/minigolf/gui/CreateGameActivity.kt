@@ -2,14 +2,11 @@ package ch.hearc.minigolf.gui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
-import ch.hearc.minigolf.data.Course
-import ch.hearc.minigolf.data.User
+import ch.hearc.minigolf.data.Course.Course
 import ch.hearc.minigolf.gui.adapter.ListCourseAdapter
-import ch.hearc.minigolf.gui.adapter.ListUserAdapter
 import ch.hearc.minigolf.gui.adapter.OnItemClickListener
 
 class CreateGameActivity : AppCompatActivity(), OnItemClickListener {

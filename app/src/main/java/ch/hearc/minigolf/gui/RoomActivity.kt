@@ -7,7 +7,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
-import ch.hearc.minigolf.data.User
+import ch.hearc.minigolf.data.User.User
 import ch.hearc.minigolf.gui.adapter.ListUserAdapter
 import com.google.android.material.button.MaterialButton
 
