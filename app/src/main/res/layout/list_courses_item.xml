@@ -7,11 +7,10 @@
     android:layout_marginLeft="@dimen/mtrl_card_spacing"
     android:layout_marginTop="@dimen/mtrl_card_spacing"
     android:layout_marginRight="@dimen/mtrl_card_spacing"
-    android:checkable="true"
     tools:ignore="PrivateResource">
 
     <RelativeLayout
-        android:id="@+id/rl_item_results"
+        android:id="@+id/rl_item_courses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/cardview_padding">

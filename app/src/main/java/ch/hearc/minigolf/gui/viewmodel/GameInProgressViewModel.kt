@@ -1,4 +1,7 @@
 package ch.hearc.minigolf.gui.viewmodel
 
-class GameInProgressViewModel {
+import androidx.lifecycle.ViewModel
+
+class GameInProgressViewMode : ViewModel(){
+
 }

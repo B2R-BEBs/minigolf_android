@@ -15,6 +15,7 @@
         android:layout_above="@+id/btn_start_party">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/list_users_item" />
