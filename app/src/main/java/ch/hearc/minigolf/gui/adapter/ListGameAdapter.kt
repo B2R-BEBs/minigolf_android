@@ -26,13 +26,7 @@ class ListGameAdapter(val itemClickListener: OnGameClickListener) :
             date.text = DateFormat
                 .getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT)
                 .format(game.date)
-            location.text = game.location
-            score.text = score.context.resources.getQuantityString(
-                R.plurals.nb_of_points,
-                game.score,
-                game.score
-            )
-
+            location.text = game.minigolf
             item.setOnClickListener {
                 clickListener.onGameClicked(game)
             }

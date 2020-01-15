@@ -35,14 +35,14 @@ class HomeActivity : AppCompatActivity() {
         /*------------------------------*\
         |*	    viewModel system
         \*------------------------------*/
-        // Replace content of the game adapter with this:
-        val factory = InjectorUtils.provideGamesViewModelFactory()
-        val viewModel = ViewModelProviders.of(this, factory)
-            .get(GamesViewModel::class.java)
-
-        viewModel.getGames().observe(this, Observer {
-            Log.d("TEST", it.joinToString("\n"))
-        })
+        // // Replace content of the game adapter with this:
+        // val factory = InjectorUtils.provideGamesViewModelFactory()
+        // val viewModel = ViewModelProviders.of(this, factory)
+        //     .get(GamesViewModel::class.java)
+        //
+        // viewModel.getGames().observe(this, Observer {
+        //     Log.d("TEST", it.joinToString("\n"))
+        // })
 
         /*------------------------------*\
         \*------------------------------*/

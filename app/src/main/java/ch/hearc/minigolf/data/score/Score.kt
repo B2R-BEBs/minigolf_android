@@ -1,10 +1,14 @@
 package ch.hearc.minigolf.data.score
 
-import java.util.*
+import com.github.kittinunf.fuel.core.ResponseDeserializable
+import com.google.gson.Gson
 
-data class Score (
-    val hole : Int,
-    val score : Int,
-    val date: Date,
-    val location: String
-)
+data class Score(
+    val hole: String,
+    val score: Int
+) {
+    class Deserializer : ResponseDeserializable<Array<Score>> {
+        override fun deserialize(content: String): Array<Score>? =
+            Gson().fromJson(content, Array<Score>::class.java)
+    }
+}

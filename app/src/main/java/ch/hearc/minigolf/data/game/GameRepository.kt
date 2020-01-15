@@ -1,9 +1,10 @@
 package ch.hearc.minigolf.data.game
 
+
 class GameRepository private constructor(private val gameDao: GameDao) {
-    fun addGame(game: Game) {
-        gameDao.addGame(game)
-    }
+    // fun addGame(game: Game) {
+    //     gameDao.addGame(game)
+    // }
 
     fun getGames() = gameDao.getGames()
 
