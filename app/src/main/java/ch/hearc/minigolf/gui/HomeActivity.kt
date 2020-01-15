@@ -34,6 +34,10 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
 
+        /*------------------------------*\
+        |*	    viewModel system
+        \*------------------------------*/
+        // Replace content of the game adapter with this:
         val factory = InjectorUtils.provideGamesViewModelFactory()
         val viewModel = ViewModelProviders.of(this, factory)
             .get(GamesViewModel::class.java)
@@ -41,6 +45,9 @@ class HomeActivity : AppCompatActivity() {
         viewModel.getGames().observe(this, Observer {
             Log.d("TEST", it.joinToString("\n"))
         })
+
+        /*------------------------------*\
+        \*------------------------------*/
 
 
         viewPager = findViewById(R.id.vp_home)
