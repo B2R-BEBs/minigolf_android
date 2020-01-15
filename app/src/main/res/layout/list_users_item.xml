@@ -10,11 +10,17 @@
     android:checkable="true"
     tools:ignore="PrivateResource">
 
-    <TextView
-        android:id="@+id/tv_user_name"
+    <RelativeLayout
+        android:id="@+id/rl_item_users"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/cardview_padding"
-        tools:text="John Doe" />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/cardview_padding">
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="John Doe" />
+    </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>

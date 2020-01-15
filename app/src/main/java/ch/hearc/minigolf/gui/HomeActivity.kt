@@ -18,8 +18,6 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var viewPager: ViewPager
     private lateinit var tabLayout: TabLayout
-    private lateinit var listFragment1: ListResultFragment
-    private lateinit var listFragment2: ListResultFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -31,15 +29,11 @@ class HomeActivity : AppCompatActivity() {
         tabLayout = findViewById(R.id.tl_home)
         tabLayout.setupWithViewPager(viewPager)
 
-        listFragment1 = ListResultFragment()
-        listFragment2 = ListResultFragment()
-
         viewPager.adapter = object :
             FragmentPagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
             override fun getItem(position: Int): Fragment =
                 if (position == 0) ListResultFragment() else ChartFragment()
-
 
             override fun getCount(): Int =
                 NB_TABS

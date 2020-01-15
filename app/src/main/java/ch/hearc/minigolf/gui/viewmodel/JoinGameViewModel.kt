@@ -1,4 +1,7 @@
 package ch.hearc.minigolf.gui.viewmodel
 
-class JoinGameViewModel {
+import androidx.lifecycle.ViewModel
+
+class JoinGameViewModel : ViewModel() {
+
 }

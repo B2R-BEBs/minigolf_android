@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:imeOptions="actionDone"
+            android:maxLength="@integer/max_length"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -44,6 +45,7 @@
         android:layout_alignParentEnd="true"
         android:text="@string/btn_join_party"
         android:layout_centerVertical="true"
+        android:enabled="false"
         />
 
     </RelativeLayout>

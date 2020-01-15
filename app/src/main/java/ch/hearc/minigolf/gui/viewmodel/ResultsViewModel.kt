@@ -1,4 +1,6 @@
 package ch.hearc.minigolf.gui.viewmodel
 
-class ResultsViewModel {
+import androidx.lifecycle.ViewModel
+
+class ResultsViewModel : ViewModel() {
 }
