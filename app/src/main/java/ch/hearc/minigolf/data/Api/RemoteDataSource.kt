@@ -14,6 +14,7 @@ class RemoteDataSource {
     var datas : Data? = null
     init {
         FuelManager.instance.basePath = "https://swiped.srvz-webapp.he-arc.ch"
+        getGames()
     }
 
     fun getGames() : Data? {
