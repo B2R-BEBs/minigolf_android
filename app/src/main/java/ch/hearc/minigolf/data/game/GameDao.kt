@@ -21,7 +21,11 @@ class GameDao {
         Fuel.get("/api/app/games/10")
             .responseObject(Game.Deserializer()){ request, response, result ->
                 val (data, err) = result
-                Log.d("TEST", result.toString())
+                // Correct response
+                Log.d("TEST", response.toString())
+
+                // Issue on deserialization
+                Log.d("TEST", err.toString())
                 games.value = data
             }
         return games
