@@ -13,6 +13,13 @@
     <string name="create_party">Créer une partie</string>
     <string name="hint_id_party">Code de la partie</string>
     <string name="btn_join_party">Rejoindre la partie</string>
+    <string name="tv_choose_course">Choisissez une courses</string>
+    <string name="tv_connection">Connexion</string>
+    <string name="btn_start_party">Commencer</string>
+    <string name="tv_next_turn">Prochain tour après :</string>
+    <string name="cb_stay_connected">Rester connecter</string>
+    <string name="btn_set_score">Valider</string>
+    <string name="tv_score">Score :</string>
     <plurals name="nb_of_points">
         <item quantity="one">%1d Point</item>
         <item quantity="other">%1d Points</item>

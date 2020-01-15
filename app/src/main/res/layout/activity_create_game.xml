@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/main_padding"
+    android:orientation="vertical"
+    tools:context=".gui.CreateGameActivity">
+
+    <TextView
+        android:id="@+id/tv_minigolf_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textSize="@dimen/title"
+        tools:text="Golf Recusandae" />
+
+    <TextView
+        android:id="@+id/tv_minigolf_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_minigolf_name"
+        android:textSize="@dimen/normal"
+        tools:text="Quaerat repellat totam qui sunt beatae eligendi. Eos dolorum inventore quibusdam maxime corporis sint qui. Eos enim repellat ducimus accusamus officia magnam ex. " />
+
+    <TextView
+        android:id="@+id/tv_minigolf_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_minigolf_desc"
+        android:textSize="@dimen/normal"
+        android:textStyle="bold"
+        tools:text="Ferrand-la-Forêt"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_choose_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_minigolf_location"
+        android:layout_marginTop="16dp"
+        android:text="@string/tv_choose_course"
+        android:textSize="@dimen/title" />
+
+    <ScrollView
+        android:id="@+id/scr_courses"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_choose_course"
+        android:layout_above="@id/btn_username_login">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list_course"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/list_courses_item" />
+
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_username_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="@string/create_party" />
+
+</RelativeLayout>

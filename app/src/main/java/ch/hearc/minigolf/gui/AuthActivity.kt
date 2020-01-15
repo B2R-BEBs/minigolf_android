@@ -1,12 +1,12 @@
-package ch.hearc.minigolf
+package ch.hearc.minigolf.gui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import ch.hearc.minigolf.data.Api.Api
 import com.google.android.material.textfield.TextInputLayout
+import androidx.appcompat.app.AppCompatActivity
+import ch.hearc.minigolf.R
 
 
 class AuthActivity : AppCompatActivity() {
@@ -101,7 +101,7 @@ class AuthActivity : AppCompatActivity() {
 //                    }
 //                }
 //        var values = Api.getInstance().RemoteDataSource.getGames()
-        
+
 
         return true
         }

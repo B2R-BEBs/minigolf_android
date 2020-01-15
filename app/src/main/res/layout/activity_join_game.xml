@@ -5,14 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".JoinPartyActivity"
+    tools:context=".gui.JoinGameActivity"
     android:layout_margin="@dimen/main_padding"
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_vertical">
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        >
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -21,10 +23,11 @@
         android:id="@+id/til_id_party"
         app:errorEnabled="true"
         android:layout_marginBottom="16dp"
-        >
+        android:layout_centerVertical="true"
 
+        >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_username"
+            android:id="@+id/et_id_game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -34,13 +37,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_username_login"
+        android:id="@+id/btn_join_party"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cb_stay_connected"
+        android:layout_below="@+id/til_id_party"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:text="@string/btn_join_party"/>
+        android:text="@string/btn_join_party"
+        android:layout_centerVertical="true"
+        />
 
     </RelativeLayout>
 
