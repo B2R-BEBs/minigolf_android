@@ -1,24 +1,17 @@
-package ch.hearc.minigolf.data.api
+package ch.hearc.minigolf.data.Api
 
-import com.github.kittinunf.fuel.Fuel
-import com.github.kittinunf.fuel.core.Response
+class Api private constructor(){
 
-object Api {
+    var RemoteDataSource = RemoteDataSource()
+        private set
 
-    private const val BASE_URL = "https://swiped.srvz-webapp.he-arc.ch/api/"
-//    override fun okHTTPClient(vararg params: String?): Response {
-//        val bodyJson = """
-//          {
-//            email : "${params[0]}",
-//            body : "${params[1]}",
-//          }
-//        """
-//        val (request, response, result) = Fuel.post("${BASE_URL}auth/login")
-//            .body(bodyJson)
-//            .response()
-//
-//        return response;
-//    }
+    companion object {
+            @Volatile private var instance: Api? = null
+
+            fun getInstance() =
+                instance ?: synchronized(this) {
+                    instance ?: Api().also { instance = it }
+                }
+        }
 }
-
 
