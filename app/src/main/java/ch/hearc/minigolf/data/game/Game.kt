@@ -1,26 +1,21 @@
 package ch.hearc.minigolf.data.game
 
-import java.util.*
-
-//data class Game (
-//    val id: Int,
-//    val creator: Player,
-//    val course: String,
-//    val minigolf: String,
-//    val players: MutableList<Player>,
-//    val date: Date,
-//    val token: String
-//) {
-//
-//}
+import ch.hearc.minigolf.data.player.Player
+import com.github.kittinunf.fuel.core.ResponseDeserializable
+import com.google.gson.Gson
 
 data class Game(
-    val hole : Int,
-    val score : Int,
-    val date: Date,
-    val location: String
+    val course: String,
+    val creator: String,
+    val date: String,
+    val id: Int,
+    val minigolf: String,
+    val players: Array<Player>,
+    val started: Int,
+    val token: String
 ) {
-    override fun toString(): String {
-        return "Game(score=$score, location='$location')"
+    class Deserializer : ResponseDeserializable<Array<Game>> {
+        override fun deserialize(content: String): Array<Game>? =
+            Gson().fromJson(content, Array<Game>::class.java)
     }
 }

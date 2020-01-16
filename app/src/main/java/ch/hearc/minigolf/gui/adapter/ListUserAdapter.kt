@@ -7,8 +7,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
-import ch.hearc.minigolf.data.User
-import java.text.DateFormat
+import ch.hearc.minigolf.data.User.User
 
 class ListUserAdapter(val users: List<User>, val itemClickListener: View.OnClickListener) :
     RecyclerView.Adapter<ListUserAdapter.ViewHolder>() {

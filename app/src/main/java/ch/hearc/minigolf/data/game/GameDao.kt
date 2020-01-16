@@ -1,24 +1,27 @@
 package ch.hearc.minigolf.data.game
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ch.hearc.minigolf.data.fakeGames
+import ch.hearc.minigolf.utilities.DeserializerUtils
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.core.FuelManager
 
 class GameDao {
-    private val gamesList = fakeGames
-    private val games = MutableLiveData<List<Game>>()
+    private val games = MutableLiveData<Array<Game>>()
 
     init {
-        games.value = gamesList
+        FuelManager.instance.basePath = "https://swiped.srvz-webapp.he-arc.ch"
+        getGames()
     }
 
-    fun addGame(game: Game) {
-        // Update dataSource
-        gamesList.add(game)
-        // update liveData
-        games.value = gamesList
+    fun getGames() : LiveData<Array<Game>> {
+        Fuel.get("/api/app/games/10")
+            .responseObject(DeserializerUtils.Deserializer()){ request, response, result ->
+                val (data, err) = result
+                Log.d("TEST", result.toString())
+                games.value = data?.data
+            }
+        return games
     }
-
-    fun getGames() = games as LiveData<List<Game>>
-
 }

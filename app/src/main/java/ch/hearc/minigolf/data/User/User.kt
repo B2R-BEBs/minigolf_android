@@ -1,4 +1,4 @@
-package ch.hearc.minigolf.data
+package ch.hearc.minigolf.data.User
 
 import java.util.*
 

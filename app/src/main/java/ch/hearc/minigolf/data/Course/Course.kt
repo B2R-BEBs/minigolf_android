@@ -1,4 +1,4 @@
-package ch.hearc.minigolf.data
+package ch.hearc.minigolf.data.Course
 
 data class Course (
     val name : String,

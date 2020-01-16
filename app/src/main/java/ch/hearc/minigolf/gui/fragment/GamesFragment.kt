@@ -12,16 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.game.Game
-import ch.hearc.minigolf.gui.ResultActivity
 import ch.hearc.minigolf.data.score.Score
+import ch.hearc.minigolf.gui.ResultActivity
 import ch.hearc.minigolf.gui.JoinGameActivity
 import ch.hearc.minigolf.gui.adapter.ListGameAdapter
 import ch.hearc.minigolf.gui.adapter.OnGameClickListener
-import ch.hearc.minigolf.ui.games.GamesViewModel
+import ch.hearc.minigolf.gui.games.GamesViewModel
 import ch.hearc.minigolf.utilities.InjectorUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.util.*
-import kotlin.random.Random
 
 class GamesFragment : Fragment(), OnGameClickListener {
 
@@ -46,6 +44,11 @@ class GamesFragment : Fragment(), OnGameClickListener {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
 
+        initGames()
+        return inflaterList
+    }
+
+    private fun initGames() {
         val gameAdapter = ListGameAdapter(this)
         recyclerView.adapter = gameAdapter
 
@@ -56,34 +59,13 @@ class GamesFragment : Fragment(), OnGameClickListener {
         viewModel.getGames().observe(
             this,
             androidx.lifecycle.Observer { games ->
-                games?.let { gameAdapter.setGames(games) }
+                games?.let { gameAdapter.setGames(games.toList()) }
             }
         )
-        return inflaterList
     }
-
-    private fun initGames() {
-
-    }
-
-
-/*
-fun initScores(nb: Int) {
-    games.addAll((1..nb).map { getFakeScore(it) })
-    recyclerView.adapter?.notifyDataSetChanged()
-//        for (i in 1..nb) {
-//            games.add(getFakeScore())
-//        }
-}
-
- */
-
-    fun getFakeScore(i: Int) =
-        Score(i, Random.nextInt(40, 60), Date(), "Neuchatel")
-
 
     override fun onGameClicked(game: Game) {
-        Log.d("GamesFragment", game.location)
+        Log.d("GamesFragment", game.minigolf)
     }
 }
 

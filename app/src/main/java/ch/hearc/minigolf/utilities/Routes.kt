@@ -1,9 +1,9 @@
-package ch.hearc.minigolf.data.api
+package ch.hearc.minigolf.utilities
 
 import android.app.DownloadManager
 
 
-sealed class ApiRoute {
+sealed class Routes {
 
     val timeOut: Int
         get() {
