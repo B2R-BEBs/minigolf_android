@@ -17,8 +17,9 @@ import ch.hearc.minigolf.gui.ResultActivity
 import ch.hearc.minigolf.gui.JoinGameActivity
 import ch.hearc.minigolf.gui.adapter.ListGameAdapter
 import ch.hearc.minigolf.gui.adapter.OnGameClickListener
-import ch.hearc.minigolf.gui.games.GamesViewModel
+import ch.hearc.minigolf.viewmodels.games.GamesViewModel
 import ch.hearc.minigolf.utilities.InjectorUtils
+import ch.hearc.minigolf.viewmodels.minigolfs.MinigolfsViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class GamesFragment : Fragment(), OnGameClickListener {
@@ -44,7 +45,16 @@ class GamesFragment : Fragment(), OnGameClickListener {
 
 
         initGames()
+        initMinigolfs()
         return inflaterList
+    }
+
+    private fun initMinigolfs() {
+        val factory = InjectorUtils.provideMinigolfsViewModelFactory()
+        val viewModel = ViewModelProviders.of(this, factory)
+            .get(MinigolfsViewModel::class.java)
+
+        // Log.d("TEST", viewModel.fetch().toString())
     }
 
     private fun initGames() {

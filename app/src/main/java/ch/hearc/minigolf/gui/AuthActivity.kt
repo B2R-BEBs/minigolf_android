@@ -99,7 +99,7 @@ class AuthActivity : AppCompatActivity() {
 //                        }
 //                    }
 //                }
-//        var values = Api.getInstance().RemoteDataSource.getGames()
+//        var values = Api.getInstance().RemoteDataSource.fetch()
 
 
         return true

@@ -20,7 +20,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var tabLayout: TabLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
@@ -33,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
         // val viewModel = ViewModelProviders.of(this, factory)
         //     .get(GamesViewModel::class.java)
         //
-        // viewModel.getGames().observe(this, Observer {
+        // viewModel.fetch().observe(this, Observer {
         //     Log.d("TEST", it.joinToString("\n"))
         // })
 

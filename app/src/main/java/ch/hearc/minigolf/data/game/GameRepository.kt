@@ -1,8 +1,7 @@
 package ch.hearc.minigolf.data.game
 
-
 class GameRepository private constructor(private val gameDao: GameDao) {
-    fun getGames() = gameDao.getGames()
+    fun getGames() = gameDao.fetch()
 
     companion object {
         @Volatile private var instance: GameRepository? = null

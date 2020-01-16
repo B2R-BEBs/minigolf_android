@@ -13,9 +13,13 @@ data class Game(
     val players: Array<Player>,
     val started: Int,
     val token: String
+) {}
+
+data class GameDeserializerUtils(
+    val data: Array<Game>
 ) {
-    class Deserializer : ResponseDeserializable<Array<Game>> {
-        override fun deserialize(content: String): Array<Game>? =
-            Gson().fromJson(content, Array<Game>::class.java)
+    class Deserializer : ResponseDeserializable<GameDeserializerUtils> {
+        override fun deserialize(content: String): GameDeserializerUtils? =
+            Gson().fromJson(content, GameDeserializerUtils::class.java)
     }
 }
