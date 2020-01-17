@@ -1,20 +1,16 @@
 package ch.hearc.minigolf.gui
 
 import android.app.Activity
-import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import ch.hearc.minigolf.R
-import ch.hearc.minigolf.data.User.User
 import ch.hearc.minigolf.data.UserGps
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.Marker
-import kotlinx.android.synthetic.main.activity_geolocation.*
 import kotlinx.coroutines.*
-import org.w3c.dom.Node
 
 class GeolocationActivity :
     AppCompatActivity(),
@@ -54,7 +50,6 @@ class GeolocationActivity :
     \*------------------------------------------------------------------*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("TEST", "ICIIII")
         setContentView(R.layout.activity_geolocation)
 
         val mapFragment =

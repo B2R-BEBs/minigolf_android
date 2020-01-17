@@ -13,7 +13,8 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import kotlin.random.Random
 
-class ChartFragment : Fragment() {
+class ChartFragment :
+    Fragment() {
 
     private lateinit var chart: BarChart
 

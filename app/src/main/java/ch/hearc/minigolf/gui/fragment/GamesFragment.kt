@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.game.Game
 import ch.hearc.minigolf.data.score.Score
+import ch.hearc.minigolf.gui.GeolocationActivity
 import ch.hearc.minigolf.gui.ResultActivity
 import ch.hearc.minigolf.gui.JoinGameActivity
 import ch.hearc.minigolf.gui.adapter.ListGameAdapter
@@ -27,6 +28,7 @@ class GamesFragment : Fragment(), OnGameClickListener {
     lateinit var recyclerView: RecyclerView
     private var games = mutableListOf<Score>()
 
+    private val intentGeolocation: Intent by lazy { Intent(activity, GeolocationActivity::class.java) }
     private val intentJoinParty: Intent by lazy { Intent(activity, JoinGameActivity::class.java) }
     private val intentResult: Intent by lazy { Intent(activity, ResultActivity::class.java) }
     override fun onCreateView(
@@ -35,10 +37,12 @@ class GamesFragment : Fragment(), OnGameClickListener {
         savedInstanceState: Bundle?
     ): View? {
 
-        val inflaterList =
-            inflater.inflate(R.layout.fragment_list_results, container, false)
+        val inflaterList = inflater.inflate(R.layout.fragment_list_results, container, false)
         val floatingButton = inflaterList.findViewById<FloatingActionButton>(R.id.fab_join)
         floatingButton.setOnClickListener { startActivity(intentJoinParty) }
+
+        val geolocationButton = inflaterList.findViewById<FloatingActionButton>(R.id.fab_geolocation)
+        geolocationButton.setOnClickListener { startActivity(intentGeolocation)}
 
         recyclerView = inflaterList.findViewById(R.id.rv_list_result)
         recyclerView.layoutManager = LinearLayoutManager(context)

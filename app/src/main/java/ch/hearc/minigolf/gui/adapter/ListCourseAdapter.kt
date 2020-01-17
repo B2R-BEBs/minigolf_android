@@ -7,7 +7,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
-import ch.hearc.minigolf.data.Course.Course
+import ch.hearc.minigolf.data.course.Course
 
 class ListCourseAdapter(val itemClickListener: OnItemClickListener) :
     RecyclerView.Adapter<ListCourseAdapter.ViewHolder>() {

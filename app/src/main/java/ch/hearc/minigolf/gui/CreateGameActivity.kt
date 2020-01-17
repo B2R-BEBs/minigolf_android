@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
-import ch.hearc.minigolf.data.Course.Course
+import ch.hearc.minigolf.data.course.Course
 import ch.hearc.minigolf.gui.adapter.ListCourseAdapter
 import ch.hearc.minigolf.gui.adapter.OnItemClickListener
 
