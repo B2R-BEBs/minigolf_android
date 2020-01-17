@@ -1,12 +1,12 @@
 package ch.hearc.minigolf.data.minigolf
 
-class MinigolfRepository private constructor(private val minigolfDao: MinigolfDao) {
-    fun getMinigolfs() = minigolfDao.fetch()
+class MinigolfRepository private constructor(private val minigolfStore: MinigolfStore) {
+    fun getMinigolfs() = minigolfStore.fetch()
 
     companion object {
         @Volatile private var instance: MinigolfRepository? = null
-        fun getInstance(minigolfDao: MinigolfDao) = instance ?: synchronized(this) {
-            instance ?: MinigolfRepository(minigolfDao).also { instance = it }
+        fun getInstance(minigolfStore: MinigolfStore) = instance ?: synchronized(this) {
+            instance ?: MinigolfRepository(minigolfStore).also { instance = it }
         }
     }
 }

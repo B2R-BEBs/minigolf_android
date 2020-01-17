@@ -1,12 +1,11 @@
 package ch.hearc.minigolf.data.game
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ch.hearc.minigolf.utilities.Http
 import com.github.kittinunf.fuel.Fuel
 
-class GameDao {
+class GameStore {
     private val items = MutableLiveData<Array<Game>>()
     private val gameDeserializer = GameDeserializerUtils.Deserializer()
 

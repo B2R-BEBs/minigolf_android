@@ -1,5 +1,6 @@
 package ch.hearc.minigolf.data.minigolf
 
+import android.util.Log
 import com.github.kittinunf.fuel.core.ResponseDeserializable
 import com.google.gson.Gson
 
@@ -17,6 +18,10 @@ data class Minigolf(
     val phone: String,
     val zipcode: String
 ) {
+
+    init {
+        Log.d("TEST", name)
+    }
     class Deserializer : ResponseDeserializable<Array<Minigolf>> {
         override fun deserialize(content: String): Array<Minigolf>? =
             Gson().fromJson(content, Array<Minigolf>::class.java)

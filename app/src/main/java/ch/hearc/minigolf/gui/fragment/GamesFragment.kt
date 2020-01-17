@@ -54,7 +54,6 @@ class GamesFragment : Fragment(), OnGameClickListener {
         val viewModel = ViewModelProviders.of(this, factory)
             .get(MinigolfsViewModel::class.java)
 
-        // Log.d("TEST", viewModel.fetch().toString())
     }
 
     private fun initGames() {

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import ch.hearc.minigolf.utilities.Http
 import com.github.kittinunf.fuel.Fuel
 
-class MinigolfDao {
+class MinigolfStore {
     private val items = MutableLiveData<Array<Minigolf>>()
 
     fun fetch(): LiveData<Array<Minigolf>> {

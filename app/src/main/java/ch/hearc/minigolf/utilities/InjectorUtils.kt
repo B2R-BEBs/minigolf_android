@@ -7,14 +7,14 @@ import ch.hearc.minigolf.viewmodels.minigolfs.MinigolfsViewModelFactory
 
 object InjectorUtils {
     fun provideGamesViewModelFactory(): GamesViewModelFactory {
-        val gameDao = FakeDatabase.getInstance().gameDao
+        val gameDao = StoreManager.getInstance().gameDao
         val gameRepository = GameRepository.getInstance(gameDao)
 
         return GamesViewModelFactory(gameRepository)
     }
 
     fun provideMinigolfsViewModelFactory(): MinigolfsViewModelFactory {
-        val minigolfDao = FakeDatabase.getInstance().minigolfDao
+        val minigolfDao = StoreManager.getInstance().minigolfDao
         val minigolfRepository = MinigolfRepository.getInstance(minigolfDao)
 
         return MinigolfsViewModelFactory(minigolfRepository)
