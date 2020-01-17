@@ -5,7 +5,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.GeolocationActivity"
+    tools:context=".ui.activities.GeolocationActivity"
     >
 
     <androidx.recyclerview.widget.RecyclerView

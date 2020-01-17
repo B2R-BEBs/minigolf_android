@@ -16,20 +16,20 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <activity android:name=".gui.GameInProgressActivity" />
-        <activity android:name=".gui.RoomActivity" />
-        <activity android:name=".gui.CreateGameActivity" />
-        <activity android:name=".gui.JoinGameActivity" />
-        <activity android:name=".gui.ResultActivity" />
-        <activity android:name=".gui.GeolocationActivity"/>
-        <activity android:name=".gui.HomeActivity">
+        <activity android:name=".ui.activities.GameInProgressActivity" />
+        <activity android:name=".ui.activities.RoomActivity" />
+        <activity android:name=".ui.activities.CreateGameActivity" />
+        <activity android:name=".ui.activities.JoinGameActivity" />
+        <activity android:name=".ui.activities.ResultActivity" />
+        <activity android:name=".ui.activities.GeolocationActivity"/>
+        <activity android:name=".ui.activities.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".gui.AuthActivity" />
+        <activity android:name=".ui.activities.AuthActivity" />
     </application>
 
 </manifest>

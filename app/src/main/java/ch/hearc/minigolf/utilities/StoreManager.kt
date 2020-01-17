@@ -1,7 +1,7 @@
 package ch.hearc.minigolf.utilities
 
-import ch.hearc.minigolf.data.game.GameStore
-import ch.hearc.minigolf.data.minigolf.MinigolfStore
+import ch.hearc.minigolf.data.stores.GameStore
+import ch.hearc.minigolf.data.stores.MinigolfStore
 
 class StoreManager private constructor() {
     var gameDao = GameStore()

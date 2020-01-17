@@ -1,9 +1,9 @@
 package ch.hearc.minigolf.utilities
 
-import ch.hearc.minigolf.data.game.GameRepository
-import ch.hearc.minigolf.data.minigolf.MinigolfRepository
-import ch.hearc.minigolf.viewmodels.games.GamesViewModelFactory
-import ch.hearc.minigolf.viewmodels.minigolfs.MinigolfsViewModelFactory
+import ch.hearc.minigolf.data.repositories.GameRepository
+import ch.hearc.minigolf.data.repositories.MinigolfRepository
+import ch.hearc.minigolf.data.viewmodels.factories.GamesViewModelFactory
+import ch.hearc.minigolf.data.viewmodels.factories.MinigolfsViewModelFactory
 
 object InjectorUtils {
     fun provideGamesViewModelFactory(): GamesViewModelFactory {

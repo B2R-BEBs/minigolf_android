@@ -7,7 +7,7 @@
     android:layout_margin="10dp"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".gui.GeolocationActivity">
+    tools:context=".ui.activities.GeolocationActivity">
 
     <fragment
         android:id="@+id/map"
