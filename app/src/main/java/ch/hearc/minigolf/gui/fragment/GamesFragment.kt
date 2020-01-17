@@ -28,7 +28,6 @@ class GamesFragment : Fragment(), OnGameClickListener {
 
     private val intentJoinParty: Intent by lazy { Intent(activity, JoinGameActivity::class.java) }
     private val intentResult: Intent by lazy { Intent(activity, ResultActivity::class.java) }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
