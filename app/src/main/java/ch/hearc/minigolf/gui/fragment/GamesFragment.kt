@@ -47,7 +47,6 @@ class GamesFragment : Fragment(), OnGameClickListener {
         recyclerView = inflaterList.findViewById(R.id.rv_list_result)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-
         initGames()
         initMinigolfs()
         return inflaterList

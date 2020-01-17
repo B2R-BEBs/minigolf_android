@@ -11,7 +11,7 @@ class CourseDetailsLookup(private val recyclerView: RecyclerView) :
     override fun getItemDetails(event: MotionEvent): ItemDetails<Long>? {
         val view = recyclerView.findChildViewUnder(event.x, event.y)
         if (view != null) {
-            return (recyclerView.getChildViewHolder(view) as ListCourseAdapter.ViewHolder).getItemDetails()
+            return (recyclerView.getChildViewHolder(view) as ListCourseAdapter.MinigolfViewHolder).getItemDetails()
         }
         return null
     }

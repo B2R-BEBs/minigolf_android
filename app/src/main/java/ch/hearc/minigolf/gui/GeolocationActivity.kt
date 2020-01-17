@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.UserGps
+import ch.hearc.minigolf.gui.adapter.MinigolfsRecyclerAdapter
+import ch.hearc.minigolf.gui.fragment.MinigolfsFragment
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -45,6 +47,20 @@ class GeolocationActivity :
         // insertUser(citiesGraph, user)
     }
 
+    fun mapInitialization() {
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+    }
+
+    fun minigolfListInitialization() {
+        // val fragment = supportFragmentManager.findFragmentById(R.id.minigolfs_fragment) as MinigolfsFragment
+
+        // val fragment = MinigolfsFragment()
+        // val fragment = supportFragmentManager.findFragmentById(R.id.minigolfs)
+        // val minigolfsFragment = supportFragmentManager.findFragmentById(R.id.minigolfs)
+
+    }
+
     /*------------------------------------------------------------------*\
     |*							                HOOKS
     \*------------------------------------------------------------------*/
@@ -52,11 +68,9 @@ class GeolocationActivity :
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_geolocation)
 
-        val mapFragment =
-            supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-
+        mapInitialization()
         userInitialization()
+        minigolfListInitialization()
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

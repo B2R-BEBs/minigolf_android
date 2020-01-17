@@ -16,6 +16,14 @@
         android:layout_height="511dp"
         tools:context=".MapActivity" />
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/minigolfs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/fragment_list_minigolfs"
+        />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
