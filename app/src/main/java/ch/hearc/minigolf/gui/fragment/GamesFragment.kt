@@ -76,7 +76,8 @@ class GamesFragment : Fragment(), OnGameClickListener {
     }
 
     override fun onGameClicked(game: Game) {
-        Log.d("GamesFragment", game.minigolf)
+        intentResult.putExtra(ResultActivity.EXTRA_GAME_OBJECT, game)
+        startActivity(intentResult)
     }
 }
 
