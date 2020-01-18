@@ -3,14 +3,13 @@ package ch.hearc.minigolf.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Course
 
-class ListCourseAdapter(val itemClickListener: OnItemClickListener) :
-    RecyclerView.Adapter<ListCourseAdapter.ViewHolder>() {
+class CoursesAdapter(val itemClickListener: OnCourseClickListener) :
+    RecyclerView.Adapter<CoursesAdapter.ViewHolder>() {
 
     private var courses = emptyList<Course>()
 
@@ -20,12 +19,12 @@ class ListCourseAdapter(val itemClickListener: OnItemClickListener) :
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val item: RelativeLayout = itemView.findViewById(R.id.rl_item_courses)
+        val item = itemView
         val nbHoles: TextView = itemView.findViewById(R.id.tv_nb_holes)
         val name: TextView = itemView.findViewById(R.id.tv_course_name)
         val desc: TextView = itemView.findViewById(R.id.tv_course_desc)
 
-        fun bind(course: Course, clickListener: OnItemClickListener) {
+        fun bind(course: Course, clickListener: OnCourseClickListener) {
             nbHoles.text = course.nbHoles.toString()
             desc.text = course.desc
             name.text = course.name
@@ -38,7 +37,7 @@ class ListCourseAdapter(val itemClickListener: OnItemClickListener) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.list_courses_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_course, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -53,11 +52,8 @@ class ListCourseAdapter(val itemClickListener: OnItemClickListener) :
     }
 
     override fun getItemCount(): Int = courses.size
-
-    override fun getItemId(position: Int): Long = position.toLong()
-
 }
 
-interface OnItemClickListener {
+interface OnCourseClickListener {
     fun onItemClicked(course: Course)
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/main_padding"
+    tools:context=".ui.activities.ChooseMinigolfActivity">
+
+    <fragment
+        android:id="@+id/fragment_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        tools:context=".MapActivity" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_below="@+id/fragment_map"
+        android:id="@+id/tv_selectMinigolf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_minigolf"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="@dimen/title"
+        />
+
+    <fragment
+        android:id="@+id/fragment_listMinigolfs"
+        android:name="ch.hearc.minigolf.ui.fragments.MinigolfsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_selectMinigolf"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

@@ -28,15 +28,16 @@ data class Game(
         parcel.createTypedArray(Player) as Array<Player>,
         parcel.readInt(),
         parcel.readString().toString()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(course)
+        parcel.writeInt(id_course)
         parcel.writeString(creator)
         parcel.writeString(date)
         parcel.writeInt(id)
         parcel.writeString(minigolf)
+        parcel.writeInt(id_minigolf)
         parcel.writeTypedArray(players, flags)
         parcel.writeInt(started)
         parcel.writeString(token)

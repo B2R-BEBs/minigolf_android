@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/til_username"
-        android:hint="@string/et_password"
+        android:hint="@string/password"
         app:errorEnabled="true"
         app:passwordToggleEnabled="true"
 
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/til_password"
-        android:text="@string/cb_stay_connected" />
+        android:text="@string/stay_connected" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_username_login"
@@ -61,6 +61,6 @@
         android:layout_below="@+id/cb_stay_connected"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="@string/btn_login"
+        android:text="@string/login"
         tools:ignore="RtlHardcoded" />
 </RelativeLayout>

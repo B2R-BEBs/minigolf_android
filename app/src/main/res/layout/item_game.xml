@@ -7,41 +7,44 @@
     android:layout_marginLeft="@dimen/mtrl_card_spacing"
     android:layout_marginTop="@dimen/mtrl_card_spacing"
     android:layout_marginRight="@dimen/mtrl_card_spacing"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     tools:ignore="PrivateResource">
 
     <RelativeLayout
-        android:id="@+id/rl_item_courses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/cardview_padding">
 
         <TextView
-            android:id="@+id/tv_nb_holes"
+            android:id="@+id/tv_score"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:gravity="center_vertical"
-            tools:text="18 trous" />
+            tools:text="56 Points" />
 
         <TextView
-            android:id="@+id/tv_course_name"
+            android:id="@+id/tv_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            tools:text="Paulette"
-            android:textStyle="bold"
-            android:layout_toStartOf="@id/tv_nb_holes"
-            />
+            android:layout_toStartOf="@id/tv_score"
+            tools:text="12 nov. 2019" />
 
         <TextView
-            android:id="@+id/tv_course_desc"
+            android:id="@+id/tv_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Laboriosam dolores ab aspernatur dignissimos corrupti in optio. Ab vero qui maiores autem voluptas a quia. "
-            android:layout_below="@id/tv_course_name"
-            android:layout_toStartOf="@id/tv_nb_holes"
-            />
+            android:layout_below="@id/tv_date"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/tv_score"
+            tools:text="Neuchâtel, Quai Robert-Comtesse 4" />
+
     </RelativeLayout>
+
 </com.google.android.material.card.MaterialCardView>

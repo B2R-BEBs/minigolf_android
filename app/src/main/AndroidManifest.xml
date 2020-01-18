@@ -13,15 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Material"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.activities.ChooseCourseActivity"></activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity android:name=".ui.activities.GameInProgressActivity" />
-        <activity android:name=".ui.activities.RoomActivity" />
-        <activity android:name=".ui.activities.CreateGameActivity" />
-        <activity android:name=".ui.activities.JoinGameActivity" />
-        <activity android:name=".ui.activities.ResultActivity" />
-        <activity android:name=".ui.activities.GeolocationActivity"/>
+        <activity android:name=".ui.activities.CreateJoinGameActivity" />
+        <activity android:name=".ui.activities.GameActivity" />
+        <activity android:name=".ui.activities.ChooseMinigolfActivity" />
         <activity android:name=".ui.activities.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

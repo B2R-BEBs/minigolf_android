@@ -15,12 +15,15 @@ class GameInProgressActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_in_progress)
 
+        /*
         btnSetScore = findViewById(R.id.btn_set_score)
         nbPicker = findViewById<NumberPicker>(R.id.np_score)
         nbPicker.minValue = 1
         nbPicker.maxValue = resources.getInteger(R.integer.max_score)
 
+
         enableSetScore(false)
+        */
     }
 
     fun enableSetScore(isEnable : Boolean) {

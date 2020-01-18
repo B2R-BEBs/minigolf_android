@@ -8,7 +8,7 @@ import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Game
 import ch.hearc.minigolf.utilities.dataStructures.Cell
 
-class ResultActivity : AppCompatActivity() {
+class GameActivity : AppCompatActivity() {
 
     private lateinit var game : Game
     private lateinit var table : TableLayout
@@ -19,7 +19,7 @@ class ResultActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_result)
+        setContentView(R.layout.activity_game)
 
         game = intent.getParcelableExtra(EXTRA_GAME_OBJECT) as Game
         table = findViewById(R.id.tl_result)

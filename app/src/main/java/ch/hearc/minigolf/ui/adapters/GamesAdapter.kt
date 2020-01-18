@@ -16,7 +16,7 @@ class ListGameAdapter(val itemClickListener: OnGameClickListener) :
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val item: RelativeLayout = itemView.findViewById(R.id.rl_item_results)
+        val item = itemView
         val date: TextView = itemView.findViewById(R.id.tv_date)
         val location: TextView = itemView.findViewById(R.id.tv_location)
         val score: TextView = itemView.findViewById(R.id.tv_score)
@@ -38,7 +38,7 @@ class ListGameAdapter(val itemClickListener: OnGameClickListener) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.list_results_item, parent, false)
+            .inflate(R.layout.item_game, parent, false)
         return ViewHolder(
             itemView
         )

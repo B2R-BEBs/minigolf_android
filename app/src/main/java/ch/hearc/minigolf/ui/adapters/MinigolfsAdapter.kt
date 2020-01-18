@@ -7,9 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Minigolf
-import kotlinx.android.synthetic.main.list_minigolfs_item.view.*
+import kotlinx.android.synthetic.main.item_minigolf.view.*
 
-class MinigolfsRecyclerAdapter : RecyclerView.Adapter<MinigolfsRecyclerAdapter.MinigolfViewHolder>() {
+class MinigolfsRecyclerAdapter(private val minigolfClickListener: OnMinigolfClickListener) :
+    RecyclerView.Adapter<MinigolfsRecyclerAdapter.MinigolfViewHolder>() {
 
     /*------------------------------------------------------------------*\
     |*							                ATTRIBUTES
@@ -18,14 +19,20 @@ class MinigolfsRecyclerAdapter : RecyclerView.Adapter<MinigolfsRecyclerAdapter.M
 
 
     class MinigolfViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val name: TextView = itemView.tv_minigolf_name
-        val address: TextView = itemView.tv_minigolf_address
 
+        val item = itemView
+        val name: TextView = item.tv_minigolf_name
+        val address: TextView = item.tv_minigolf_address
 
-        fun bind(minigolf: Minigolf) {
+        fun bind(minigolf: Minigolf, clickListener: OnMinigolfClickListener) {
             name.text = minigolf.name
             address.text = minigolf.address
+
+            item.setOnClickListener {
+                clickListener.onItemClicked(minigolf)
+            }
         }
+
     }
 
     /*------------------------------------------------------------------*\
@@ -36,14 +43,12 @@ class MinigolfsRecyclerAdapter : RecyclerView.Adapter<MinigolfsRecyclerAdapter.M
         return MinigolfViewHolder(
           LayoutInflater
                   .from(parent.context)
-                  .inflate(R.layout.list_minigolfs_item, parent, false)
+                  .inflate(R.layout.item_minigolf, parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: MinigolfViewHolder, position: Int) {
-        when(holder) {
-            is MinigolfViewHolder -> holder.bind(items.get(position))
-        }
+        holder.bind(items[position], minigolfClickListener)
     }
 
     override fun getItemCount() = items.size
@@ -53,4 +58,8 @@ class MinigolfsRecyclerAdapter : RecyclerView.Adapter<MinigolfsRecyclerAdapter.M
         this.items = minigolfs
         notifyDataSetChanged()
     }
+}
+
+interface OnMinigolfClickListener {
+    fun onItemClicked(minigolf: Minigolf)
 }
