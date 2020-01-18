@@ -5,16 +5,16 @@ import com.github.kittinunf.fuel.core.ResponseDeserializable
 import com.google.gson.Gson
 
 data class Minigolf(
-    val id: String,
+    val id: Int,
     val name: String,
     val address: String,
     val city: String,
-    val courses: Array<String>,
+    val courses: Array<Course>,
     val description: String,
     val email: String,
     val image: String,
-    val lat: String,
-    val long: String,
+    val lat: Float,
+    val long: Float,
     val phone: String,
     val zipcode: String
 ) {

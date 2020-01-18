@@ -20,9 +20,9 @@ class CreateGameActivity : AppCompatActivity(), OnItemClickListener {
         val adapter = ListCourseAdapter(this)
 
         var courses = listOf(
-            Course("Course1", "Très belle courses", 18),
-            Course("Course2", "Course pour enfant", 7),
-            Course("Course3", "Course hardcore", 24)
+            Course(1,"Course1", "Très belle courses", "ima",18),
+            Course(2,"Course2", "Course pour enfant", "ima",7),
+            Course(3,"Course3", "Course hardcore", "ima", 24)
         )
 
         adapter.setCourses(courses)

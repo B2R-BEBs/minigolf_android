@@ -6,6 +6,7 @@ import com.github.kittinunf.fuel.core.ResponseDeserializable
 import com.google.gson.Gson
 
 data class Score(
+    val id :Int,
     val hole: String,
     val score: Int
 ) : Parcelable {
@@ -16,6 +17,7 @@ data class Score(
     }
 
     constructor(parcel: Parcel) : this(
+        parcel.readInt(),
         parcel.readString().toString(),
         parcel.readInt()
     )

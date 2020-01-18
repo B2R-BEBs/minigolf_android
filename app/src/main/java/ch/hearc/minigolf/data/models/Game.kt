@@ -7,20 +7,24 @@ import com.google.gson.Gson
 
 data class Game(
     val course: String,
+    val id_course: Int,
     val creator: String,
     val date: String,
     val id: Int,
     val minigolf: String,
+    val id_minigolf: Int,
     val players: Array<Player>,
     val started: Int,
     val token: String
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString().toString(),
+        parcel.readInt(),
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readInt(),
         parcel.readString().toString(),
+        parcel.readInt(),
         parcel.createTypedArray(Player) as Array<Player>,
         parcel.readInt(),
         parcel.readString().toString()
