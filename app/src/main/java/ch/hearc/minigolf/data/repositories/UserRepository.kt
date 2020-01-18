@@ -4,6 +4,7 @@ import ch.hearc.minigolf.data.stores.UserStore
 
 class UserRepository private constructor(private val UserStore: UserStore) {
     fun auth(username : String, password: String) = UserStore.auth(username, password)
+    fun getUser() = UserStore.getUser()
 
     companion object {
         @Volatile private var instance: UserRepository? = null

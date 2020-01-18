@@ -71,9 +71,9 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun checkAuth(username: String, password: String): Boolean {
-        return UserRepository.getInstance(UserStore()).auth(username, password)
+        val value = UserRepository.getInstance(UserStore()).auth(username, password)
+        Log.d("TOKEN", "getUser ${UserRepository.getInstance(UserStore()).getUser().value?.name}")
 
-
-        return true
+        return value
     }
 }

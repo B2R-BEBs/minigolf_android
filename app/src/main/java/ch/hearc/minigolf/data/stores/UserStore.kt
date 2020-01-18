@@ -1,6 +1,7 @@
 package ch.hearc.minigolf.data.stores
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ch.hearc.minigolf.data.models.Token
 import ch.hearc.minigolf.data.models.User
@@ -19,6 +20,9 @@ class UserStore {
         var token = ""
     }
 
+    fun getUser() : LiveData<User>{
+        return  item
+    }
 
     fun auth(username: String, password: String): Boolean {
         val token = login(username, password)
