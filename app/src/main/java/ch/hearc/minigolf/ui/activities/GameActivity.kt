@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TableLayout
 import android.widget.TableRow
+import android.widget.TextView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Game
 import ch.hearc.minigolf.utilities.dataStructures.Cell
@@ -45,9 +46,9 @@ class GameActivity : AppCompatActivity() {
             TableLayout.LayoutParams.MATCH_PARENT,
             TableLayout.LayoutParams.MATCH_PARENT
         )
-        tableRow.addView(Cell(this, ""))
+        tableRow.addView(TextView(this))
         for(player in game.players) {
-            tableRow.addView(Cell(this, player.player))
+            tableRow.addView(Cell(this, player.player, Cell.CELL_COLOR.COLOR))
         }
 
         return tableRow
@@ -62,7 +63,8 @@ class GameActivity : AppCompatActivity() {
         tableRow.addView(
             Cell(
                 this,
-                game.players.first().scores[numHole].hole
+                game.players.first().scores[numHole].hole,
+                Cell.CELL_COLOR.COLOR
             )
         )
 
@@ -84,14 +86,15 @@ class GameActivity : AppCompatActivity() {
             TableLayout.LayoutParams.MATCH_PARENT,
             TableLayout.LayoutParams.MATCH_PARENT
         )
-        tableRow.addView(Cell(this, ""))
+        tableRow.addView(TextView(this))
 
         for(player in game.players) {
             val total = player.scores.sumBy { score -> score.score }
             tableRow.addView(
                 Cell(
                     this,
-                    total.toString()
+                    total.toString(),
+                    Cell.CELL_COLOR.COLOR
                 )
             )
         }
