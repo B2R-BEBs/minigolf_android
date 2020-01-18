@@ -7,14 +7,15 @@
     android:layout_marginLeft="@dimen/mtrl_card_spacing"
     android:layout_marginTop="@dimen/mtrl_card_spacing"
     android:layout_marginRight="@dimen/mtrl_card_spacing"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     tools:ignore="PrivateResource">
 
     <RelativeLayout
-        android:id="@+id/rl_item_minigolfs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/cardview_padding">
-
 
         <TextView
             android:id="@+id/tv_minigolf_name"

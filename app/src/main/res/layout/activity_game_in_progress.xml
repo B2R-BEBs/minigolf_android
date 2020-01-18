@@ -9,40 +9,6 @@
     android:orientation="vertical"
     tools:context=".ui.activities.GameInProgressActivity">
 
-    <TextView
-        android:id="@+id/tv_next_turn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:textAlignment="center"
-        android:textSize="@dimen/title"
-        android:textStyle="bold"
-        tools:text="C'est à vous après 3 personnes" />
 
-
-    <TextView
-        android:id="@+id/tv_score"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_next_turn"
-        android:text="@string/tv_score"
-        android:textSize="@dimen/title"
-        android:layout_marginBottom="20dp"/>
-
-    <NumberPicker
-        android:id="@+id/np_score"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_score"
-        android:layout_marginBottom="10dp"
-        />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_set_score"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/np_score"
-        android:text="@string/btn_set_score"
-        tools:ignore="RtlHardcoded" />
 
 </RelativeLayout>

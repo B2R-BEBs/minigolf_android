@@ -12,32 +12,32 @@ import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Game
 import ch.hearc.minigolf.data.models.Score
-import ch.hearc.minigolf.ui.activities.GeolocationActivity
-import ch.hearc.minigolf.ui.activities.ResultActivity
-import ch.hearc.minigolf.ui.activities.JoinGameActivity
+import ch.hearc.minigolf.ui.activities.ChooseMinigolfActivity
+import ch.hearc.minigolf.ui.activities.GameActivity
+import ch.hearc.minigolf.ui.activities.CreateJoinGameActivity
 import ch.hearc.minigolf.ui.adapters.ListGameAdapter
 import ch.hearc.minigolf.ui.adapters.OnGameClickListener
 import ch.hearc.minigolf.data.viewmodels.GamesViewModel
 import ch.hearc.minigolf.utilities.InjectorUtils
 import ch.hearc.minigolf.data.viewmodels.MinigolfsViewModel
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class GamesFragment : Fragment(), OnGameClickListener {
 
     lateinit var recyclerView: RecyclerView
-    private var games = mutableListOf<Score>()
 
-    private val intentGeolocation: Intent by lazy { Intent(activity, GeolocationActivity::class.java) }
-    private val intentJoinParty: Intent by lazy { Intent(activity, JoinGameActivity::class.java) }
-    private val intentResult: Intent by lazy { Intent(activity, ResultActivity::class.java) }
+    private val intentGeolocation: Intent by lazy { Intent(activity, ChooseMinigolfActivity::class.java) }
+    private val intentJoinParty: Intent by lazy { Intent(activity, CreateJoinGameActivity::class.java) }
+    private val intentResult: Intent by lazy { Intent(activity, GameActivity::class.java) }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val inflaterList = inflater.inflate(R.layout.fragment_list_results, container, false)
-        val floatingButton = inflaterList.findViewById<FloatingActionButton>(R.id.fab_join)
+        val inflaterList = inflater.inflate(R.layout.fragment_games, container, false)
+        val floatingButton = inflaterList.findViewById<MaterialButton>(R.id.mb_start_game)
         floatingButton.setOnClickListener { startActivity(intentJoinParty) }
 
         val geolocationButton = inflaterList.findViewById<FloatingActionButton>(R.id.fab_geolocation)
@@ -75,7 +75,7 @@ class GamesFragment : Fragment(), OnGameClickListener {
     }
 
     override fun onGameClicked(game: Game) {
-        intentResult.putExtra(ResultActivity.EXTRA_GAME_OBJECT, game)
+        intentResult.putExtra(GameActivity.EXTRA_GAME_OBJECT, game)
         startActivity(intentResult)
     }
 }
