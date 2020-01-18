@@ -8,7 +8,7 @@ import com.google.gson.Gson
 data class Score(
     val id: Int,
     val hole: String,
-    val score: Int
+    var score: Int
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),

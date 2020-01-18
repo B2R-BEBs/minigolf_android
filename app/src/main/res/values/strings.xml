@@ -22,6 +22,8 @@
     <string name="or">ou</string>
     <string name="select_minigolf">Sélectionnez un minigolf :</string>
     <string name="select_course">Sélectionnez une course :</string>
+    <string name="token_game">Code de la partie :</string>
+    <string name="send">Envoyer</string>
     <plurals name="nb_of_points">
         <item quantity="one">%1d Point</item>
         <item quantity="other">%1d Points</item>

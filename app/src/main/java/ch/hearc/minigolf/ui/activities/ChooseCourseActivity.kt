@@ -1,7 +1,9 @@
 package ch.hearc.minigolf.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Course
@@ -15,6 +17,10 @@ class ChooseCourseActivity : AppCompatActivity(), OnCourseClickListener {
         const val EXTRA_MINIGOLF_OBJECT = "course"
     }
 
+    private val intentGameInProgressActivity: Intent by lazy {
+        Intent(this, GameInProgressActivity::class.java)
+    }
+
     private lateinit var minigolf: Minigolf
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,11 +31,13 @@ class ChooseCourseActivity : AppCompatActivity(), OnCourseClickListener {
 
         val coursesRecyclerView = findViewById<RecyclerView>(R.id.rv_listCourses)
         val adapter = CoursesAdapter(this)
-        //adapter.setCourses(minigolf.courses)
+        coursesRecyclerView.layoutManager = LinearLayoutManager(this)
+        adapter.setCourses(minigolf.courses.toList())
         coursesRecyclerView.adapter = adapter
     }
 
     override fun onItemClicked(course: Course) {
-
+        intentGameInProgressActivity.putExtra(GameInProgressActivity.EXTRA_COURSE_OBJECT, course)
+        startActivity(intentGameInProgressActivity)
     }
 }

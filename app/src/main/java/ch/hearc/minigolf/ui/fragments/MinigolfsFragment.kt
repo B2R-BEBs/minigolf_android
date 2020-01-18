@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Minigolf
-import ch.hearc.minigolf.ui.adapters.MinigolfsRecyclerAdapter
-import ch.hearc.minigolf.utilities.InjectorUtils
 import ch.hearc.minigolf.data.viewmodels.MinigolfsViewModel
 import ch.hearc.minigolf.ui.activities.ChooseCourseActivity
+import ch.hearc.minigolf.ui.activities.GameInProgressActivity
+import ch.hearc.minigolf.ui.adapters.MinigolfsRecyclerAdapter
 import ch.hearc.minigolf.ui.adapters.OnMinigolfClickListener
+import ch.hearc.minigolf.utilities.InjectorUtils
 
 class MinigolfsFragment : Fragment(), OnMinigolfClickListener {
 
@@ -24,10 +25,15 @@ class MinigolfsFragment : Fragment(), OnMinigolfClickListener {
         Intent(activity, ChooseCourseActivity::class.java)
     }
 
+    private val intentGameInProgressActivity: Intent by lazy {
+        Intent(activity, GameInProgressActivity::class.java)
+    }
+
+
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
 
         val inflaterList = inflater.inflate(R.layout.fragment_minigolfs, container, false)
@@ -58,7 +64,16 @@ class MinigolfsFragment : Fragment(), OnMinigolfClickListener {
     }
 
     override fun onItemClicked(minigolf: Minigolf) {
-        intentChooseCourse.putExtra(ChooseCourseActivity.EXTRA_MINIGOLF_OBJECT, minigolf)
-        startActivity(intentChooseCourse)
+
+        if (minigolf.courses.size == 1) {
+            intentGameInProgressActivity.putExtra(
+                GameInProgressActivity.EXTRA_COURSE_OBJECT,
+                minigolf.courses.first()
+            )
+            startActivity(intentGameInProgressActivity)
+        } else {
+            intentChooseCourse.putExtra(ChooseCourseActivity.EXTRA_MINIGOLF_OBJECT, minigolf)
+            startActivity(intentChooseCourse)
+        }
     }
 }
