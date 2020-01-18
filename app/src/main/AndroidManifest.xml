@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Material"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.activities.ChooseCourseActivity"></activity>
+        <activity android:name=".ui.activities.ChooseCourseActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -24,13 +24,15 @@
         <activity android:name=".ui.activities.GameActivity" />
         <activity android:name=".ui.activities.ChooseMinigolfActivity" />
         <activity android:name=".ui.activities.HomeActivity">
+
+        </activity>
+        <activity android:name=".ui.activities.AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.AuthActivity" />
     </application>
 
 </manifest>
