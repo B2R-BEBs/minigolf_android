@@ -8,6 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Course
+import ch.hearc.minigolf.data.repositories.GameRepository
+import ch.hearc.minigolf.data.repositories.UserRepository
+import ch.hearc.minigolf.data.stores.GameStore
+import ch.hearc.minigolf.data.stores.UserStore
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 
@@ -46,8 +50,8 @@ class CreateJoinGameActivity : AppCompatActivity() {
     }
 
     private fun joinGame(token: String) {
-        // TODO : get Course from API
-        Log.d("TOKEN", token)
+        Log.d("TOKEN", GameRepository.getInstance(GameStore()).joinGame(token)?.token.toString())
+        Log.d("TOKEN", GameRepository.getInstance(GameStore()).getGame(token).value.toString())
 
         //intentGameInProgress.putExtra(GameInProgressActivity.EXTRA_COURSE_OBJECT, course)
         //startActivity(intentGameInProgress)

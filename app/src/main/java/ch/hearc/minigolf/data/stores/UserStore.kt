@@ -26,8 +26,6 @@ class UserStore {
 
     fun auth(username: String, password: String): Boolean {
         val token = login(username, password)
-
-        Log.d("TOKEN", "TEST TOKEN : $token")
         if (token == "") {
             return false
         }
@@ -41,18 +39,12 @@ class UserStore {
             login.appendHeader("Content-Type", "application/json; utf-8; */*")
             try {
                 val (request, response, result) = login.awaitObjectResponse(Token.Deserializer())
-                Log.d(
-                    "TOKEN",
-                    "LOGIN |\nrequest : $request\nresponse : $response\nresult : $result"
-                )
                 if (response.statusCode == 200) {
                     token = result.token
                 }
             } catch (exception: Exception){}
 
         }
-
-        Log.d("TOKEN", "TOKEN INTEST : $token")
         return token
     }
 
@@ -62,10 +54,6 @@ class UserStore {
             val userRequest = Fuel.get(HttpManager.routes.profile).authentication().bearer(token)
             try {
                 val (request, response, result) = userRequest.awaitObjectResponse(User.Deserializer())
-                Log.d(
-                    "TOKEN",
-                    "PROFILE |\nrequest : $request\nresponse : $response\nresult : $result"
-                )
                 item.value = result
             } catch (exception : Exception){}
         }

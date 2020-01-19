@@ -1,7 +1,9 @@
 package ch.hearc.minigolf.utilities.network
 
 class Routes {
-    val games = "app/games/10"
+    fun games(id_user : String) : String {return "app/games/$id_user"}
+    fun gameToken(token : String) : String {return "app/game-token/$token"}
+    val gamejoin = "app/join-game"
     val minigolfs = "app/minigolfs"
     val auth = "auth/login"
     val profile = "users/profile"
