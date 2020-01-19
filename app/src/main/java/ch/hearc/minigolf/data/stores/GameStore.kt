@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ch.hearc.minigolf.data.models.Game
 import ch.hearc.minigolf.data.models.GameDeserializerUtils
+import ch.hearc.minigolf.data.models.Score
 import ch.hearc.minigolf.data.models.Token
 import ch.hearc.minigolf.data.repositories.UserRepository
 import ch.hearc.minigolf.utilities.network.HttpManager
@@ -73,6 +74,18 @@ class GameStore {
             }
         }
         return gameCreate
+    }
+
+    fun update(score_id: String, score : Int) {
+        runBlocking {
+            val bodyJson = """ { "id": "$score_id", "score": "$score" } """
+            val login = Fuel.post(HttpManager.routes.scoreUpdate).body(bodyJson)
+            login.appendHeader("Content-Type", "application/json; utf-8; */*")
+            try {
+                login.awaitObjectResponse(Score.Deserializer())
+            } catch (exception: Exception) {
+            }
+        }
     }
 
     private fun getUserId(): String {
