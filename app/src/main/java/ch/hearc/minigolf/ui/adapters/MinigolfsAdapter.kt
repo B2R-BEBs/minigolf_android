@@ -32,6 +32,7 @@ class MinigolfsAdapter(private val minigolfClickListener: OnMinigolfClickListene
                 clickListener.onItemClicked(minigolf)
             }
         }
+
     }
 
     /*------------------------------------------------------------------*\

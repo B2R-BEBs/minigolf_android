@@ -90,19 +90,18 @@ class ChooseMinigolfActivity :
         viewModel.getMinigolfs().observe(this, androidx.lifecycle.Observer { minigolfs ->
                 minigolfs?.let { minigolfAdapter.submitList(minigolfs.toList()) }
                 pinClosestMinigolf()
-                hilightClosestMinigolf()
+                // hilightClosestMinigolf()
             }
         )
 
     }
 
-    private fun hilightClosestMinigolf() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    // private fun hilightClosestMinigolf() {
+    //     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    // }
 
     fun pinClosestMinigolf() {
         val user = UserRepository.getInstance(UserStore()).getUser().value
-
         val minigolfs = MinigolfRepository.getInstance(MinigolfStore()).getItems().value
         val closest = minigolfs?.first()
         val minigolfMarker = MarkerOptions()
