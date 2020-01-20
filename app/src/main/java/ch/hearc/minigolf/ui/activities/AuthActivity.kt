@@ -55,6 +55,8 @@ class AuthActivity : AppCompatActivity() {
                 )
             ) {
                 startActivity(intentHome)
+
+
             }
             else {
                 errorLogin.visibility = View.VISIBLE
@@ -79,9 +81,6 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun checkAuth(username: String, password: String): Boolean {
-        val value = UserRepository.getInstance(UserStore()).auth(username, password)
-        Log.d("TOKEN", "getUser ${UserRepository.getInstance(UserStore()).getUser().value?.name}")
-
-        return value
+        return UserRepository.getInstance(UserStore()).auth(username, password)
     }
 }

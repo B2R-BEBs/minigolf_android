@@ -43,6 +43,11 @@ data class Game(
         parcel.writeString(token)
     }
 
+    class Deserializer : ResponseDeserializable<Game> {
+        override fun deserialize(content: String): Game? =
+            Gson().fromJson(content, Game::class.java)
+    }
+
     override fun describeContents(): Int {
         return 0
     }
