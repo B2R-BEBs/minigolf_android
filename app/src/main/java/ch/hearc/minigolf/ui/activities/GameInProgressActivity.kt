@@ -2,35 +2,63 @@ package ch.hearc.minigolf.ui.activities
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
-import ch.hearc.minigolf.data.models.Course
+import ch.hearc.minigolf.data.models.Game
+import ch.hearc.minigolf.data.models.Player
 import ch.hearc.minigolf.data.models.Score
+import ch.hearc.minigolf.data.models.User
+import ch.hearc.minigolf.data.repositories.UserRepository
+import ch.hearc.minigolf.data.stores.UserStore
+import ch.hearc.minigolf.data.viewmodels.GamesViewModel
 import ch.hearc.minigolf.ui.adapters.AllEditTextFilledListener
 import ch.hearc.minigolf.ui.adapters.ScoresAdapter
+import ch.hearc.minigolf.utilities.InjectorUtils
 import com.google.android.material.button.MaterialButton
-import kotlinx.android.synthetic.main.activity_game_in_progress.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 class GameInProgressActivity : AppCompatActivity(), AllEditTextFilledListener {
 
     companion object {
-        const val EXTRA_COURSE_OBJECT = "course"
+        const val EXTRA_ID_COURSE = "idCourse"
     }
 
-    private lateinit var course: Course
+    private var idCourse: Int = 0
+    private var game: Game? = null
+    private lateinit var vm: GamesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_in_progress)
 
-        course = intent.getParcelableExtra(EXTRA_COURSE_OBJECT) as Course
+        idCourse = intent.getIntExtra(EXTRA_ID_COURSE, 0)
+
+
+
+        Log.d("GameInProgressActivity", idCourse.toString())
+
+        val factory = InjectorUtils.provideGamesViewModelFactory()
+        vm = ViewModelProviders.of(this, factory)
+            .get(GamesViewModel::class.java)
+
+
+        game = vm.createGame(idCourse.toString())
+        Log.d("GameInProgressActivity", game?.token.toString())
+
+
+
+        findViewById<TextView>(R.id.mtv_token)
 
         val coursesRecyclerView = findViewById<RecyclerView>(R.id.rv_list_scores)
         val adapter = ScoresAdapter(this)
         coursesRecyclerView.layoutManager = LinearLayoutManager(this)
-        adapter.setScores(createFakeScores(18))
+        getPlayerMe()?.scores?.let { adapter.setScores(it) }
         coursesRecyclerView.adapter = adapter
     }
 
@@ -47,6 +75,16 @@ class GameInProgressActivity : AppCompatActivity(), AllEditTextFilledListener {
     override fun isAllEditTextFilled(bool: Boolean) {
         Log.d("GameInProgresActivity", bool.toString())
         findViewById<MaterialButton>(R.id.mb_submit_score).isEnabled = bool
+    }
+
+    fun getPlayerMe() : Player? {
+        val user = UserRepository.getInstance(UserStore()).getUser().value as User
+        for (player in game?.players!!) {
+            if (player.id_user == Integer.parseInt(user.id)) {
+                return player
+            }
+        }
+        return null
     }
 
 }

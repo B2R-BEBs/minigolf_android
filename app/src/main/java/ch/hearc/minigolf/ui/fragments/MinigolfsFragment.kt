@@ -36,6 +36,7 @@ class MinigolfsFragment : Fragment(), OnMinigolfClickListener {
         savedInstanceState: Bundle?
     ): View? {
 
+
         val inflaterList = inflater.inflate(R.layout.fragment_minigolfs, container, false)
 
         recyclerView = inflaterList.findViewById(R.id.rv_list_minigolfs)
@@ -67,8 +68,8 @@ class MinigolfsFragment : Fragment(), OnMinigolfClickListener {
 
         if (minigolf.courses.size == 1) {
             intentGameInProgressActivity.putExtra(
-                GameInProgressActivity.EXTRA_COURSE_OBJECT,
-                minigolf.courses.first()
+                GameInProgressActivity.EXTRA_ID_COURSE,
+                minigolf.courses.first().id
             )
             startActivity(intentGameInProgressActivity)
         } else {

@@ -59,8 +59,9 @@ class ChooseMinigolfActivity :
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_minigolf)
 
+        /*
         mapInitialization()
-        userInitialization()
+        userInitialization()*/
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

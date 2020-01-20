@@ -5,17 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.repositories.UserRepository
 import ch.hearc.minigolf.data.stores.UserStore
-import com.github.kittinunf.fuel.Fuel
-import com.github.kittinunf.fuel.core.FuelManager
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class AuthActivity : AppCompatActivity() {
 
@@ -26,7 +21,7 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var textInputLayoutUsername: TextInputLayout
     private lateinit var textInputLayoutPassword: TextInputLayout
     private lateinit var buttonLogin: Button
-    private lateinit var errorLogin : MaterialTextView
+    private lateinit var errorLogin: MaterialTextView
 
     private val intentHome: Intent by lazy { Intent(this, HomeActivity::class.java) }
 
@@ -34,10 +29,18 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
+        setUI()
+        setListeners()
+    }
+
+    private fun setUI() {
         textInputLayoutUsername = findViewById(R.id.til_username)
         textInputLayoutPassword = findViewById(R.id.til_password)
         buttonLogin = findViewById(R.id.btn_username_login)
         errorLogin = findViewById(R.id.mtv_error_login)
+    }
+
+    private fun setListeners() {
         buttonLogin.setOnClickListener { startHomeActivity() }
     }
 
@@ -55,10 +58,7 @@ class AuthActivity : AppCompatActivity() {
                 )
             ) {
                 startActivity(intentHome)
-
-
-            }
-            else {
+            } else {
                 errorLogin.visibility = View.VISIBLE
             }
         }

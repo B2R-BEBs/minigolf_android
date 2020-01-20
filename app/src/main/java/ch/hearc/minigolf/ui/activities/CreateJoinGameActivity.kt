@@ -32,8 +32,7 @@ class CreateJoinGameActivity : AppCompatActivity() {
 
         val maxLength = resources.getInteger(R.integer.max_length)
 
-        val tokenEditText = findViewById<TextInputEditText>(R.id.et_token_game)
-        val btnJoin = findViewById<MaterialButton>(R.id.mb_joinGame)
+
         tokenEditText.filters = arrayOf(InputFilter.AllCaps(), InputFilter.LengthFilter(maxLength))
 
         tokenEditText.addTextChangedListener {
@@ -47,6 +46,11 @@ class CreateJoinGameActivity : AppCompatActivity() {
         findViewById<MaterialButton>(R.id.mb_createGame).setOnClickListener {
             startActivity(intentChooseMinigolf)
         }
+    }
+
+    private fun setUI(){
+        tokenEditText = findViewById<TextInputEditText>(R.id.et_token_game)
+        btnJoin = findViewById<MaterialButton>(R.id.mb_joinGame)
     }
 
     private fun joinGame(token: String) {

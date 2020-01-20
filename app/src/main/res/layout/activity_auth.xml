@@ -35,7 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:inputType="text" />
+            android:inputType="textEmailAddress"
+            android:text="nath@test.com"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,7 +56,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:text="toptal00"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
