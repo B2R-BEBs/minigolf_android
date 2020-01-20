@@ -8,13 +8,12 @@ import androidx.viewpager.widget.ViewPager
 import ch.hearc.minigolf.ui.fragments.GamesFragment
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.ui.fragments.ChartsFragment
-import ch.hearc.minigolf.ui.fragments.MinigolfsFragment
 import com.google.android.material.tabs.TabLayout
 
 class HomeActivity : AppCompatActivity() {
 
     companion object {
-        const val NB_TABS = 3
+        const val NB_TABS = 2
     }
 
     private lateinit var viewPager: ViewPager
@@ -35,7 +34,6 @@ class HomeActivity : AppCompatActivity() {
             override fun getItem(position: Int): Fragment = when(position) {
                 0 -> GamesFragment()
                 1 -> ChartsFragment()
-                2 -> MinigolfsFragment()
                 else -> GamesFragment()
             }
 
@@ -44,7 +42,6 @@ class HomeActivity : AppCompatActivity() {
             override fun getPageTitle(position: Int): CharSequence? = when(position) {
                 0 -> getString(R.string.tabItem_list)
                 1 -> getString(R.string.tabItem_graph)
-                2 -> "Minigolfs"
                 else -> super.getPageTitle(position)
             }
         }

@@ -2,7 +2,6 @@ package ch.hearc.minigolf.ui.adapters
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import ch.hearc.minigolf.data.models.Score
 import com.google.android.material.textfield.TextInputEditText
 
 
-class ScoresAdapter(val allEditTextFilledListener: AllEditTextFilledListener) :
+class ScoresAdapter(val scoreAdapterListener: ScoreAdapterListener) :
     RecyclerView.Adapter<ScoresAdapter.ViewHolder>() {
 
     private var scores = emptyList<Score>()
@@ -83,13 +82,18 @@ class ScoresAdapter(val allEditTextFilledListener: AllEditTextFilledListener) :
             val allEditTextFilled = scores.all { score -> score.score != 0 }
             if(allEditTextFilledState != allEditTextFilled) {
                 allEditTextFilledState = allEditTextFilled
-                allEditTextFilledListener.isAllEditTextFilled(allEditTextFilledState)
+                scoreAdapterListener.isAllEditTextFilled(allEditTextFilledState)
             }
+
+
+            scoreAdapterListener.scoreUpdated(scores[position])
+
         }
     }
 }
 
-interface AllEditTextFilledListener {
+interface ScoreAdapterListener {
     fun isAllEditTextFilled(bool: Boolean)
+    fun scoreUpdated(score: Score)
 }
 
