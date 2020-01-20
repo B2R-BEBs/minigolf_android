@@ -1,7 +1,6 @@
 package ch.hearc.minigolf.data.repositories
 
 import android.app.Activity
-import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import ch.hearc.minigolf.data.stores.UserStore
@@ -21,7 +20,7 @@ class UserRepository private constructor(private val UserStore: UserStore) {
 
     fun auth(username : String, password: String) = UserStore.auth(username, password)
     fun getUser() = UserStore.getUser()
-    fun setGeolocationData(latLng: LatLng) = UserStore.setGeolocationData(latLng)
+
 
     /*------------------------------------------------------------------*\
     |*						    Buisness
@@ -34,12 +33,9 @@ class UserRepository private constructor(private val UserStore: UserStore) {
             .lastLocation
             .addOnSuccessListener {
                 if (it != null) {
-                    UserRepository
-                        .getInstance(UserStore())
-                        .setGeolocationData(LatLng(it.latitude, it.longitude))
+                    UserStore.setGeolocationData(LatLng(it.latitude, it.longitude))
                 }
             }
-
     }
     fun initPermission(context: Activity) {
         val LOCATION_PERMISSION_REQUEST_CODE = 1
@@ -53,5 +49,4 @@ class UserRepository private constructor(private val UserStore: UserStore) {
             )
         }
     }
-
 }
