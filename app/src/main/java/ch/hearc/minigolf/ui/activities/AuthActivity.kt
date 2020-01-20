@@ -3,7 +3,9 @@ package ch.hearc.minigolf.ui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.repositories.UserRepository
@@ -11,6 +13,7 @@ import ch.hearc.minigolf.data.stores.UserStore
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.FuelManager
 import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.textview.MaterialTextView
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -23,6 +26,7 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var textInputLayoutUsername: TextInputLayout
     private lateinit var textInputLayoutPassword: TextInputLayout
     private lateinit var buttonLogin: Button
+    private lateinit var errorLogin : MaterialTextView
 
     private val intentHome: Intent by lazy { Intent(this, HomeActivity::class.java) }
 
@@ -33,11 +37,14 @@ class AuthActivity : AppCompatActivity() {
         textInputLayoutUsername = findViewById(R.id.til_username)
         textInputLayoutPassword = findViewById(R.id.til_password)
         buttonLogin = findViewById(R.id.btn_username_login)
-
+        errorLogin = findViewById(R.id.mtv_error_login)
         buttonLogin.setOnClickListener { startHomeActivity() }
     }
 
     private fun startHomeActivity() {
+
+        errorLogin.visibility = View.INVISIBLE
+
         if (checkInputs()) {
 
             Log.d(TAG, "Inputs OK")
@@ -49,8 +56,9 @@ class AuthActivity : AppCompatActivity() {
             ) {
                 startActivity(intentHome)
             }
-
-
+            else {
+                errorLogin.visibility = View.VISIBLE
+            }
         }
     }
 

@@ -9,11 +9,23 @@
     android:orientation="vertical"
     tools:context=".ui.activities.AuthActivity">
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mtv_error_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/error_login"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/mtv_error_login"
         android:layout_marginBottom="16dp"
         android:hint="@string/hint_username"
         app:errorEnabled="true">

@@ -3,31 +3,33 @@ package ch.hearc.minigolf.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Game
+import ch.hearc.minigolf.data.models.User
+import ch.hearc.minigolf.data.repositories.UserRepository
+import ch.hearc.minigolf.data.stores.UserStore
+import java.time.LocalDate
 
 class ListGameAdapter(val itemClickListener: OnGameClickListener) :
     RecyclerView.Adapter<ListGameAdapter.ViewHolder>() {
 
     private var games: List<Game> = emptyList()
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val item = itemView
         val date: TextView = itemView.findViewById(R.id.tv_date)
         val location: TextView = itemView.findViewById(R.id.tv_location)
-        val score: TextView = itemView.findViewById(R.id.tv_score)
+        val scoresText: TextView = itemView.findViewById(R.id.tv_score)
 
         fun bind(game: Game, clickListener: OnGameClickListener) {
+            val score = getScore(game)
 
-            // // Date is a string not a proper date just use it as it is.
-            // date.text = DateFormat
-            //     .getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT)
-            //     .format(game.date)
-
+            scoresText.text =
+                item.resources.getQuantityString(R.plurals.nb_of_points, score, score)
+            date.text = formatDate(game.date)
             location.text = game.minigolf
             item.setOnClickListener {
                 clickListener.onGameClicked(game)
@@ -52,6 +54,22 @@ class ListGameAdapter(val itemClickListener: OnGameClickListener) :
     internal fun setGames(games: List<Game>) {
         this.games = games
         notifyDataSetChanged()
+    }
+
+    fun formatDate(date : String) : String {
+        // TODO
+        return date
+    }
+
+    fun getScore(game: Game): Int {
+        val user = UserRepository.getInstance(UserStore()).getUser().value as User
+        for (player in game.players) {
+            if (player.id_user == Integer.parseInt(user.id)) {
+                return player.scores.sumBy { score -> score.score }
+            }
+        }
+
+        return 0
     }
 
     override fun getItemCount(): Int = games.size
