@@ -41,7 +41,7 @@ class GameStore {
         return item
     }
 
-    fun join(token: String): LiveData<Game> {
+    fun join(token: String): Boolean {
         runBlocking {
             val bodyJson = """ { "token": "$token", "user_id": "${getUserId()}" } """
             val login = Fuel.post(HttpManager.routes.gamejoin).body(bodyJson)
@@ -52,16 +52,13 @@ class GameStore {
                     gameCreate = result
                 }
             } catch (exception: Exception) {
-                Log.d("TOKEN", "error")
                 gameCreate = null
             }
         }
-
-        val token = if (gameCreate?.token != null) gameCreate!!.token else ""
-        return fetch(token)
+        return if (gameCreate?.token != null) true else false
     }
 
-    fun create(id_course: String): LiveData<Game> {
+    fun create(id_course: String): String? {
         runBlocking {
             val bodyJson = """ { "course_id": "$id_course", "user_id": "${getUserId()}" } """
             val login = Fuel.post(HttpManager.routes.gameCreate).body(bodyJson)
@@ -75,9 +72,7 @@ class GameStore {
                 gameCreate = null
             }
         }
-
-        val token = if (gameCreate?.token != null) gameCreate!!.token else ""
-        return fetch(token)
+        return gameCreate?.token
     }
 
     fun update(score_id: String, score: Int) {
