@@ -1,5 +1,6 @@
 package ch.hearc.minigolf.data.stores
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ch.hearc.minigolf.data.models.Minigolf
@@ -21,6 +22,8 @@ class MinigolfStore {
             }
         return items
     }
+
+    fun getItems(): LiveData<Array<Minigolf>> = items
 
     fun sortByDistanceToUser(data: Array<Minigolf>?): Array<Minigolf>? {
         val user = UserRepository.getInstance(UserStore()).getUser().value

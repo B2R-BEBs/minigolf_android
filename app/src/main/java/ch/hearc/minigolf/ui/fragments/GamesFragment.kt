@@ -47,8 +47,7 @@ class GamesFragment : Fragment(), OnGameClickListener {
 
     private fun initMinigolfs() {
         val factory = InjectorUtils.provideMinigolfsViewModelFactory()
-        val viewModel = ViewModelProviders.of(this, factory)
-            .get(MinigolfsViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this, factory).get(MinigolfsViewModel::class.java)
 
     }
 

@@ -12,7 +12,7 @@ import com.github.kittinunf.fuel.coroutines.awaitObjectResponse
 import kotlinx.coroutines.runBlocking
 
 class GameStore {
-    private val items = MutableLiveData<Array<Game>>()
+    val items = MutableLiveData<Array<Game>>()
     private val item = MutableLiveData<Game>()
     private val gameDeserializer = GameDeserializerUtils.Deserializer()
 
