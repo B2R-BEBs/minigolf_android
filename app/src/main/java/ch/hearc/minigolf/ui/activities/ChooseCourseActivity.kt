@@ -43,8 +43,16 @@ class ChooseCourseActivity : AppCompatActivity(), OnCourseClickListener {
     }
 
     override fun onItemClicked(course: Course) {
-        val game = GameRepository.getInstance(GameStore()).createGame(course.id.toString()).value
-        intentGameInProgressActivity.putExtra(GameInProgressActivity.EXTRA_GAME_TOKEN, game?.token)
+        intentGameInProgressActivity.putExtra(
+            GameInProgressActivity.EXTRA_GAME_TOKEN,
+            createGame(course.id.toString())
+        )
         startActivity(intentGameInProgressActivity)
+
+    }
+
+    private fun createGame(idCourse: String): String {
+        val token = GameRepository.getInstance(GameStore()).createGame(idCourse)
+        return token!!
     }
 }

@@ -1,10 +1,9 @@
 package ch.hearc.minigolf.ui.activities
 
 import android.os.Bundle
-import android.util.JsonToken
 import android.util.Log
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,9 +19,6 @@ import ch.hearc.minigolf.ui.adapters.AllEditTextFilledListener
 import ch.hearc.minigolf.ui.adapters.ScoresAdapter
 import ch.hearc.minigolf.utilities.InjectorUtils
 import com.google.android.material.button.MaterialButton
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 
 class GameInProgressActivity : AppCompatActivity(), AllEditTextFilledListener {
 
@@ -31,7 +27,7 @@ class GameInProgressActivity : AppCompatActivity(), AllEditTextFilledListener {
     }
 
     private lateinit var token: String
-    private lateinit var game: Game
+    private lateinit var game: LiveData<Game>
     private lateinit var vm: GamesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,12 +40,17 @@ class GameInProgressActivity : AppCompatActivity(), AllEditTextFilledListener {
         vm = ViewModelProviders.of(this, factory)
             .get(GamesViewModel::class.java)
 
-        game = vm.getGame(token).value!!
+        game = vm.getGame(token)
+
+        game.observe(this,
+            androidx.lifecycle.Observer { game ->
+                Log.d("GameInProgressActivity", game.token)
+            })
 
         val coursesRecyclerView = findViewById<RecyclerView>(R.id.rv_list_scores)
         val adapter = ScoresAdapter(this)
         coursesRecyclerView.layoutManager = LinearLayoutManager(this)
-        getPlayerMe()?.scores?.let { adapter.setScores(it) }
+        //getPlayerMe()?.scores?.let { adapter.setScores(it) }
         coursesRecyclerView.adapter = adapter
     }
 
@@ -68,7 +69,8 @@ class GameInProgressActivity : AppCompatActivity(), AllEditTextFilledListener {
         findViewById<MaterialButton>(R.id.mb_submit_score).isEnabled = bool
     }
 
-    fun getPlayerMe() : Player? {
+    /*
+    fun getPlayerMe(): Player? {
         val user = UserRepository.getInstance(UserStore()).getUser().value as User
         for (player in game?.players!!) {
             if (player.id_user == Integer.parseInt(user.id)) {
@@ -77,5 +79,7 @@ class GameInProgressActivity : AppCompatActivity(), AllEditTextFilledListener {
         }
         return null
     }
+
+     */
 
 }

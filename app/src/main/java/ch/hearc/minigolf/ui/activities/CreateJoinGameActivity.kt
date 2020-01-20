@@ -57,6 +57,7 @@ class CreateJoinGameActivity : AppCompatActivity() {
     private fun joinGame(token: String) {
         /*
         Log.d("TOKEN", GameRepository.getInstance(GameStore()).joinGame(token)?.token.toString())
+        Log.d("TOKEN", GameRepository.getInstance(GameStore()).joinGame(token)?.toString())
         Log.d("TOKEN", GameRepository.getInstance(GameStore()).getGame(token).value.toString())
 */
         //intentGameInProgress.putExtra(GameInProgressActivity.EXTRA_COURSE_OBJECT, course)

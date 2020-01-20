@@ -2,7 +2,6 @@ package ch.hearc.minigolf.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -69,18 +68,19 @@ class MinigolfsFragment : Fragment(), OnMinigolfClickListener {
 
     override fun onItemClicked(minigolf: Minigolf) {
         if (minigolf.courses.size == 1) {
-
-            Log.d("TokenGameCreated", minigolf.courses.first().id.toString())
-
-            val game = GameRepository.getInstance(GameStore())
-                .createGame(minigolf.courses.first().id.toString()).value
-
-            Log.d("TokenGameCreated", game?.token.toString())
-            intentGameInProgressActivity.putExtra(GameInProgressActivity.EXTRA_GAME_TOKEN, game?.token)
+            intentGameInProgressActivity.putExtra(
+                GameInProgressActivity.EXTRA_GAME_TOKEN,
+                createGame(minigolf.courses.first().id.toString())
+            )
             startActivity(intentGameInProgressActivity)
         } else {
             intentChooseCourse.putExtra(ChooseCourseActivity.EXTRA_MINIGOLF_OBJECT, minigolf)
             startActivity(intentChooseCourse)
         }
+    }
+
+    private fun createGame(idCourse: String): String {
+        val token = GameRepository.getInstance(GameStore()).createGame(idCourse)
+        return token!!
     }
 }
