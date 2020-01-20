@@ -19,7 +19,7 @@ class UserStore {
         var token = ""
     }
 
-    fun getUser() : LiveData<User> = item
+    fun getUser(): LiveData<User> = item
 
     fun auth(username: String, password: String): Boolean {
         val token = login(username, password)
@@ -35,12 +35,12 @@ class UserStore {
             val login = Fuel.post(HttpManager.routes.auth).body(bodyJson)
             login.appendHeader("Content-Type", "application/json; utf-8; */*")
             try {
-                val (request, response, result) = login.awaitObjectResponse(Token.Deserializer())
+                val (_, response, result) = login.awaitObjectResponse(Token.Deserializer())
                 if (response.statusCode == 200) {
                     token = result.token
                 }
-            } catch (exception: Exception){}
-
+            } catch (exception: Exception) {
+            }
         }
         return token
     }
@@ -49,9 +49,10 @@ class UserStore {
         runBlocking {
             val userRequest = Fuel.get(HttpManager.routes.profile).authentication().bearer(token)
             try {
-                val (request, response, result) = userRequest.awaitObjectResponse(User.Deserializer())
+                val (_, _, result) = userRequest.awaitObjectResponse(User.Deserializer())
                 item.value = result
-            } catch (exception : Exception){}
+            } catch (exception: Exception) {
+            }
         }
         return true
     }

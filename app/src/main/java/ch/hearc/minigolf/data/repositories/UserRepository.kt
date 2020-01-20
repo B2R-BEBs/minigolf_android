@@ -7,24 +7,22 @@ import ch.hearc.minigolf.data.stores.UserStore
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
 
-class UserRepository private constructor(private val UserStore: UserStore) {
+class UserRepository private constructor(private val userStore: UserStore) {
 
     companion object {
-        @Volatile private var instance: UserRepository? = null
+        @Volatile
+        private var instance: UserRepository? = null
+
         fun getInstance(userStore: UserStore) = instance
             ?: synchronized(this) {
-            instance
-                ?: UserRepository(userStore).also { instance = it }
-        }
+                instance
+                    ?: UserRepository(userStore).also { instance = it }
+            }
     }
 
-    fun auth(username : String, password: String) = UserStore.auth(username, password)
-    fun getUser() = UserStore.getUser()
+    fun auth(username: String, password: String) = userStore.auth(username, password)
+    fun getUser() = userStore.getUser()
 
-
-    /*------------------------------------------------------------------*\
-    |*						    Buisness
-    \*------------------------------------------------------------------*/
 
     fun setGeolocationData(context: Activity) {
         initPermission(context)
@@ -33,10 +31,11 @@ class UserRepository private constructor(private val UserStore: UserStore) {
             .lastLocation
             .addOnSuccessListener {
                 if (it != null) {
-                    UserStore.setGeolocationData(LatLng(it.latitude, it.longitude))
+                    userStore.setGeolocationData(LatLng(it.latitude, it.longitude))
                 }
             }
     }
+
     fun initPermission(context: Activity) {
         val LOCATION_PERMISSION_REQUEST_CODE = 1
         val fineLocation = android.Manifest.permission.ACCESS_FINE_LOCATION
