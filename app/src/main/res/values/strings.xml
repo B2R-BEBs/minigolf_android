@@ -4,30 +4,37 @@
     <!-- activity_auth -->
     <string name="hint_username">Nom d\'utilisateur</string>
     <string name="error_empty_field">Veuillez compléter ce champ.</string>
-    <string name="btn_login">Se connecter</string>
+    <string name="login">Se connecter</string>
     <string name="tabItem_list">Liste</string>
     <string name="tabItem_graph">Graphique</string>
-    <string name="et_password">Mot de passe</string>
+    <string name="password">Mot de passe</string>
     <string name="minigolf_name">Nom du minigolf</string>
     <string name="minigolf_course_name">Nom de la course</string>
-    <string name="create_party">Créer une partie</string>
-    <string name="hint_id_party">Code de la partie</string>
-    <string name="btn_join_party">Rejoindre la partie</string>
-    <string name="tv_choose_course">Choisissez une courses</string>
-    <string name="tv_connection">Connexion</string>
-    <string name="btn_start_party">Commencer</string>
-    <string name="tv_next_turn">Prochain tour après :</string>
-    <string name="cb_stay_connected">Rester connecter</string>
-    <string name="btn_set_score">Valider</string>
-    <string name="tv_score">Score :</string>
+    <string name="create_game">Créer une partie</string>
+    <string name="hint_token_game">Code de la partie</string>
+    <string name="join_game">Rejoindre la partie</string>
+    <string name="choose_course">Choisissez une courses</string>
+    <string name="connection">Connexion</string>
+    <string name="start_game">Commencer</string>
+    <string name="stay_connected">Rester connecter</string>
+    <string name="startGame">Commencer une nouvelle partie</string>
+    <string name="error_token">Le code que vous avez entez n\'existe pas</string>
+    <string name="or">ou</string>
+    <string name="select_minigolf">Sélectionnez un minigolf :</string>
+    <string name="select_course">Sélectionnez une course :</string>
+    <string name="token_game">Code de la partie :</string>
+    <string name="send">Envoyer</string>
     <plurals name="nb_of_points">
         <item quantity="one">%1d Point</item>
         <item quantity="other">%1d Points</item>
     </plurals>
-
-    <!-- fragment_list_results -->
-
-
-    <!-- fragment_chart -->
+    <plurals name="nb_of_holes">
+        <item quantity="one">%1d Trou</item>
+        <item quantity="other">%1d Trous</item>
+    </plurals>
+    <plurals name="tv_next_turn">
+        <item quantity="one">C\'est à vous après %1d personne</item>
+        <item quantity="other">C\'est à vous après %1d personnes</item>
+    </plurals>
 
 </resources>

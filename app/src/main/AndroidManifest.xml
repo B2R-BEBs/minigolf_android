@@ -4,6 +4,7 @@
     package="ch.hearc.minigolf">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -12,13 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/Material"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".gui.GameInProgressActivity"></activity>
-        <activity android:name=".gui.RoomActivity" />
-        <activity android:name=".gui.CreateGameActivity" />
-        <activity android:name=".gui.JoinGameActivity" />
-        <activity android:name=".gui.ResultActivity" />
-        <activity android:name=".gui.HomeActivity" />
-        <activity android:name=".gui.AuthActivity">
+        <activity android:name=".ui.activities.ChooseCourseActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".ui.activities.GameInProgressActivity" />
+        <activity android:name=".ui.activities.CreateJoinGameActivity" />
+        <activity android:name=".ui.activities.GameActivity" />
+        <activity android:name=".ui.activities.ChooseMinigolfActivity" />
+        <activity android:name=".ui.activities.HomeActivity">
+
+        </activity>
+        <activity android:name=".ui.activities.AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

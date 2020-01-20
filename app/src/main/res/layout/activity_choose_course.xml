@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.ChooseCourseActivity"
+    android:padding="@dimen/main_padding">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_alignParentTop="true"
+        android:id="@+id/tv_selectCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_course"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="@dimen/title"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/tv_selectCourse"
+        android:id="@+id/rv_listCourses"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_course"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
