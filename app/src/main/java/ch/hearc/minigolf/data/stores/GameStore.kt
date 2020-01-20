@@ -1,14 +1,11 @@
 package ch.hearc.minigolf.data.stores
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ch.hearc.minigolf.data.models.Game
 import ch.hearc.minigolf.data.models.GameDeserializerUtils
 import ch.hearc.minigolf.data.models.Score
-import ch.hearc.minigolf.data.models.Token
 import ch.hearc.minigolf.data.repositories.UserRepository
-import ch.hearc.minigolf.data.stores.UserStore.Companion.token
 import ch.hearc.minigolf.utilities.network.HttpManager
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.coroutines.awaitObjectResponse

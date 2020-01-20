@@ -13,7 +13,7 @@ import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Game
 import ch.hearc.minigolf.ui.activities.GameActivity
 import ch.hearc.minigolf.ui.activities.CreateJoinGameActivity
-import ch.hearc.minigolf.ui.adapters.ListGameAdapter
+import ch.hearc.minigolf.ui.adapters.GamesAdapter
 import ch.hearc.minigolf.ui.adapters.OnGameClickListener
 import ch.hearc.minigolf.data.viewmodels.GamesViewModel
 import ch.hearc.minigolf.utilities.InjectorUtils
@@ -53,7 +53,7 @@ class GamesFragment : Fragment(), OnGameClickListener {
     }
 
     private fun initGames() {
-        val gameAdapter = ListGameAdapter(this)
+        val gameAdapter = GamesAdapter(this)
         recyclerView.adapter = gameAdapter
 
         val factory = InjectorUtils.provideGamesViewModelFactory()

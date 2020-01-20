@@ -16,7 +16,7 @@ import ch.hearc.minigolf.data.stores.GameStore
 import ch.hearc.minigolf.data.viewmodels.MinigolfsViewModel
 import ch.hearc.minigolf.ui.activities.ChooseCourseActivity
 import ch.hearc.minigolf.ui.activities.GameInProgressActivity
-import ch.hearc.minigolf.ui.adapters.MinigolfsRecyclerAdapter
+import ch.hearc.minigolf.ui.adapters.MinigolfsAdapter
 import ch.hearc.minigolf.ui.adapters.OnMinigolfClickListener
 import ch.hearc.minigolf.utilities.InjectorUtils
 
@@ -50,7 +50,7 @@ class MinigolfsFragment : Fragment(), OnMinigolfClickListener {
 
     private fun initRecycleView() {
 
-        val minigolfAdapter = MinigolfsRecyclerAdapter(this)
+        val minigolfAdapter = MinigolfsAdapter(this)
         recyclerView.adapter = minigolfAdapter
 
         val factory = InjectorUtils.provideMinigolfsViewModelFactory()

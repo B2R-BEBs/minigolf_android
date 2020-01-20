@@ -9,8 +9,8 @@ import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Minigolf
 import kotlinx.android.synthetic.main.item_minigolf.view.*
 
-class MinigolfsRecyclerAdapter(private val minigolfClickListener: OnMinigolfClickListener) :
-    RecyclerView.Adapter<MinigolfsRecyclerAdapter.MinigolfViewHolder>() {
+class MinigolfsAdapter(private val minigolfClickListener: OnMinigolfClickListener) :
+    RecyclerView.Adapter<MinigolfsAdapter.MinigolfViewHolder>() {
 
     /*------------------------------------------------------------------*\
     |*							                ATTRIBUTES

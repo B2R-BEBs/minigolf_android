@@ -1,5 +1,7 @@
 package ch.hearc.minigolf.ui.adapters
 
+import android.annotation.TargetApi
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +13,10 @@ import ch.hearc.minigolf.data.models.User
 import ch.hearc.minigolf.data.repositories.UserRepository
 import ch.hearc.minigolf.data.stores.UserStore
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
-class ListGameAdapter(val itemClickListener: OnGameClickListener) :
-    RecyclerView.Adapter<ListGameAdapter.ViewHolder>() {
+class GamesAdapter(val itemClickListener: OnGameClickListener) :
+    RecyclerView.Adapter<GamesAdapter.ViewHolder>() {
 
     private var games: List<Game> = emptyList()
 
@@ -29,7 +32,7 @@ class ListGameAdapter(val itemClickListener: OnGameClickListener) :
 
             scoresText.text =
                 item.resources.getQuantityString(R.plurals.nb_of_points, score, score)
-            date.text = formatDate(game.date)
+            date.text = getFormatedDate(game.date)
             location.text = game.minigolf
             item.setOnClickListener {
                 clickListener.onGameClicked(game)
@@ -56,7 +59,9 @@ class ListGameAdapter(val itemClickListener: OnGameClickListener) :
         notifyDataSetChanged()
     }
 
-    fun formatDate(date : String) : String {
+    @TargetApi(Build.VERSION_CODES.O)
+    fun getFormatedDate(date : String) : String {
+        // return LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE_TIME).toString()
         // TODO
         return date
     }
