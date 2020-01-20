@@ -8,6 +8,7 @@ import ch.hearc.minigolf.data.models.GameDeserializerUtils
 import ch.hearc.minigolf.data.models.Score
 import ch.hearc.minigolf.data.models.Token
 import ch.hearc.minigolf.data.repositories.UserRepository
+import ch.hearc.minigolf.data.stores.UserStore.Companion.token
 import ch.hearc.minigolf.utilities.network.HttpManager
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.coroutines.awaitObjectResponse
@@ -40,13 +41,13 @@ class GameStore {
         return item
     }
 
-    fun join(token: String): Game? {
+    fun join(token: String): LiveData<Game> {
         runBlocking {
             val bodyJson = """ { "token": "$token", "user_id": "${getUserId()}" } """
             val login = Fuel.post(HttpManager.routes.gamejoin).body(bodyJson)
             login.appendHeader("Content-Type", "application/json; utf-8; */*")
             try {
-                val (request, response, result) = login.awaitObjectResponse(Game.Deserializer())
+                val (_, response, result) = login.awaitObjectResponse(Game.Deserializer())
                 if (response.statusCode == 201) {
                     gameCreate = result
                 }
@@ -56,16 +57,17 @@ class GameStore {
             }
         }
 
-        return gameCreate
+        val token = if (gameCreate?.token != null) gameCreate!!.token else ""
+        return fetch(token)
     }
 
-    fun create(id_course: String): Game? {
+    fun create(id_course: String): LiveData<Game> {
         runBlocking {
             val bodyJson = """ { "course_id": "$id_course", "user_id": "${getUserId()}" } """
-            val login = Fuel.post(HttpManager.routes.auth).body(bodyJson)
+            val login = Fuel.post(HttpManager.routes.gameCreate).body(bodyJson)
             login.appendHeader("Content-Type", "application/json; utf-8; */*")
             try {
-                val (request, response, result) = login.awaitObjectResponse(Game.Deserializer())
+                val (_, response, result) = login.awaitObjectResponse(Game.Deserializer())
                 if (response.statusCode == 201) {
                     gameCreate = result
                 }
@@ -73,10 +75,12 @@ class GameStore {
                 gameCreate = null
             }
         }
-        return gameCreate
+
+        val token = if (gameCreate?.token != null) gameCreate!!.token else ""
+        return fetch(token)
     }
 
-    fun update(score_id: String, score : Int) {
+    fun update(score_id: String, score: Int) {
         runBlocking {
             val bodyJson = """ { "id": "$score_id", "score": "$score" } """
             val login = Fuel.post(HttpManager.routes.scoreUpdate).body(bodyJson)
