@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Course
 import ch.hearc.minigolf.data.models.Minigolf
+import ch.hearc.minigolf.data.repositories.GameRepository
+import ch.hearc.minigolf.data.stores.GameStore
 import ch.hearc.minigolf.ui.adapters.CoursesAdapter
 import ch.hearc.minigolf.ui.adapters.OnCourseClickListener
 
@@ -41,7 +43,8 @@ class ChooseCourseActivity : AppCompatActivity(), OnCourseClickListener {
     }
 
     override fun onItemClicked(course: Course) {
-        intentGameInProgressActivity.putExtra(GameInProgressActivity.EXTRA_ID_COURSE, course.id)
+        val game = GameRepository.getInstance(GameStore()).createGame(course.id.toString()).value
+        intentGameInProgressActivity.putExtra(GameInProgressActivity.EXTRA_GAME_TOKEN, game?.token)
         startActivity(intentGameInProgressActivity)
     }
 }

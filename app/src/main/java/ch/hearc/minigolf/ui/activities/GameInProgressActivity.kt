@@ -1,6 +1,7 @@
 package ch.hearc.minigolf.ui.activities
 
 import android.os.Bundle
+import android.util.JsonToken
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -26,34 +27,24 @@ import kotlinx.coroutines.withContext
 class GameInProgressActivity : AppCompatActivity(), AllEditTextFilledListener {
 
     companion object {
-        const val EXTRA_ID_COURSE = "idCourse"
+        const val EXTRA_GAME_TOKEN = "gameToken"
     }
 
-    private var idCourse: Int = 0
-    private var game: Game? = null
+    private lateinit var token: String
+    private lateinit var game: Game
     private lateinit var vm: GamesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_in_progress)
 
-        idCourse = intent.getIntExtra(EXTRA_ID_COURSE, 0)
-
-
-
-        Log.d("GameInProgressActivity", idCourse.toString())
+        token = intent.getStringExtra(EXTRA_GAME_TOKEN) as String
 
         val factory = InjectorUtils.provideGamesViewModelFactory()
         vm = ViewModelProviders.of(this, factory)
             .get(GamesViewModel::class.java)
 
-
-        game = vm.createGame(idCourse.toString())
-        Log.d("GameInProgressActivity", game?.token.toString())
-
-
-
-        findViewById<TextView>(R.id.mtv_token)
+        game = vm.getGame(token).value!!
 
         val coursesRecyclerView = findViewById<RecyclerView>(R.id.rv_list_scores)
         val adapter = ScoresAdapter(this)
