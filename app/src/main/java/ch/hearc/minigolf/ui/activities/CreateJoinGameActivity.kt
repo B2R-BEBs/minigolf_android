@@ -12,6 +12,7 @@ import ch.hearc.minigolf.data.repositories.GameRepository
 import ch.hearc.minigolf.data.repositories.UserRepository
 import ch.hearc.minigolf.data.stores.GameStore
 import ch.hearc.minigolf.data.stores.UserStore
+import ch.hearc.minigolf.data.stores.UserStore.Companion.token
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 
@@ -45,7 +46,9 @@ class CreateJoinGameActivity : AppCompatActivity() {
         }
 
         findViewById<MaterialButton>(R.id.mb_createGame).setOnClickListener {
-            startActivity(intentChooseMinigolf)
+            Log.d("TOKEN2", "id_game : ${GameRepository.getInstance(GameStore()).createGame("1")}")
+
+            // startActivity(intentChooseMinigolf)
         }
     }
 
