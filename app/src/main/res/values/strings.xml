@@ -23,7 +23,7 @@
     <string name="select_minigolf">Sélectionnez un minigolf :</string>
     <string name="select_course">Sélectionnez une course :</string>
     <string name="token_game">Code de la partie :</string>
-    <string name="send">Envoyer</string>
+    <string name="terminate">Fin de la partie</string>
     <string name="error_login">Nom d\'utilisateur ou mot de passe incorrect</string>
     <plurals name="nb_of_points">
         <item quantity="one">%1d Point</item>

@@ -23,7 +23,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.Marker
 import kotlinx.coroutines.*
 
-
 class ChooseMinigolfActivity :
     AppCompatActivity(),
     OnMapReadyCallback,

@@ -8,19 +8,8 @@
     android:orientation="vertical"
     android:padding="@dimen/main_padding">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/mtv_errorToken"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/error_token"
-        android:textColor="@color/design_default_color_error"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:visibility="invisible" />
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_id_party"
+        android:id="@+id/til_token_game"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_token_game"

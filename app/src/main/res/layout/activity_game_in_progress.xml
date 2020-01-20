@@ -11,28 +11,28 @@
         android:id="@+id/ll_token"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="10dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:text="@string/token_game"
-            android:textSize="20sp"
             android:textAlignment="textEnd"
-            android:layout_marginEnd="10dp" />
+            android:textSize="20sp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/mtv_token"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:background="@drawable/token"
+            android:padding="10dp"
             android:textColor="@color/lightGrey"
-            android:textStyle="bold"
             android:textSize="20sp"
+            android:textStyle="bold"
             tools:text="ABC123" />
     </LinearLayout>
 
@@ -40,18 +40,18 @@
         android:id="@+id/rv_list_scores"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_score"
-        android:layout_above="@id/mb_submit_score"
-        android:layout_below="@id/ll_token" />
+        android:layout_above="@id/mb_terminate"
+        android:layout_below="@id/ll_token"
+        tools:listitem="@layout/item_score" />
 
     <com.google.android.material.button.MaterialButton
-        android:enabled="false"
-        android:padding="@dimen/paddingBigButton"
-        android:id="@+id/mb_submit_score"
+        android:id="@+id/mb_terminate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="10dp"
-        android:text="@string/send" />
+        android:enabled="false"
+        android:padding="@dimen/paddingBigButton"
+        android:text="@string/terminate" />
 
 </RelativeLayout>

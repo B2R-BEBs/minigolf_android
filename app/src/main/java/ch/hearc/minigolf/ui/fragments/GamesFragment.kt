@@ -2,29 +2,40 @@ package ch.hearc.minigolf.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Game
-import ch.hearc.minigolf.ui.activities.GameActivity
+import ch.hearc.minigolf.data.viewmodels.GamesViewModel
 import ch.hearc.minigolf.ui.activities.CreateJoinGameActivity
+import ch.hearc.minigolf.ui.activities.GameActivity
 import ch.hearc.minigolf.ui.adapters.GamesAdapter
 import ch.hearc.minigolf.ui.adapters.OnGameClickListener
-import ch.hearc.minigolf.data.viewmodels.GamesViewModel
 import ch.hearc.minigolf.utilities.InjectorUtils
-import ch.hearc.minigolf.data.viewmodels.MinigolfsViewModel
 import com.google.android.material.button.MaterialButton
 
 class GamesFragment : Fragment(), OnGameClickListener {
 
-    lateinit var recyclerView: RecyclerView
+    lateinit var rvGames: RecyclerView
+    lateinit var btnStartGame: MaterialButton
+    lateinit var gameAdapter: GamesAdapter
+    lateinit var vm: GamesViewModel
 
-    private val intentJoinParty: Intent by lazy { Intent(activity, CreateJoinGameActivity::class.java) }
+    lateinit var games: LiveData<Array<Game>>
+
+    private val intentJoinParty: Intent by lazy {
+        Intent(
+            activity,
+            CreateJoinGameActivity::class.java
+        )
+    }
     private val intentResult: Intent by lazy { Intent(activity, GameActivity::class.java) }
 
     override fun onCreateView(
@@ -32,40 +43,32 @@ class GamesFragment : Fragment(), OnGameClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val inflaterList = inflater.inflate(R.layout.fragment_games, container, false)
-        val floatingButton = inflaterList.findViewById<MaterialButton>(R.id.mb_start_game)
-        floatingButton.setOnClickListener { startActivity(intentJoinParty) }
-
-        recyclerView = inflaterList.findViewById(R.id.rv_list_result)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-
-        initGames()
-        initMinigolfs()
-        return inflaterList
-    }
-
-    private fun initMinigolfs() {
-        val factory = InjectorUtils.provideMinigolfsViewModelFactory()
-        val viewModel = ViewModelProviders.of(this, factory)
-            .get(MinigolfsViewModel::class.java)
-
-    }
-
-    private fun initGames() {
-        val gameAdapter = GamesAdapter(this)
-        recyclerView.adapter = gameAdapter
 
         val factory = InjectorUtils.provideGamesViewModelFactory()
-        val viewModel = ViewModelProviders.of(this, factory)
-            .get(GamesViewModel::class.java)
+        vm = activity?.run {
+            ViewModelProviders.of(this, factory)[GamesViewModel::class.java]
+        } ?: throw Exception("Invalid Activity")
 
-        viewModel.getGames().observe(
+        games = vm.getGames()
+
+        btnStartGame = inflaterList.findViewById<MaterialButton>(R.id.mb_start_game)
+        rvGames = inflaterList.findViewById(R.id.rv_list_result)
+
+        rvGames.layoutManager = LinearLayoutManager(context)
+        gameAdapter = GamesAdapter(this)
+        rvGames.adapter = gameAdapter
+
+        games.observe(
             this,
             androidx.lifecycle.Observer { games ->
                 games?.let { gameAdapter.setGames(games.toList()) }
             }
         )
+
+        btnStartGame.setOnClickListener { startActivity(intentJoinParty) }
+
+        return inflaterList
     }
 
     override fun onGameClicked(game: Game) {

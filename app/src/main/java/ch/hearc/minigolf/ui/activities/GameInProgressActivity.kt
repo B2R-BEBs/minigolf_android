@@ -1,5 +1,6 @@
 package ch.hearc.minigolf.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
@@ -30,6 +31,11 @@ class GameInProgressActivity : AppCompatActivity(), ScoreAdapterListener {
     private lateinit var token: String
     private lateinit var game: LiveData<Game>
     private lateinit var vm: GamesViewModel
+    private lateinit var btnTerminate: MaterialButton
+
+    private val homeActivity: Intent by lazy {
+        Intent(this, HomeActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +48,7 @@ class GameInProgressActivity : AppCompatActivity(), ScoreAdapterListener {
             .get(GamesViewModel::class.java)
         game = vm.getGame(token)
 
+        btnTerminate = findViewById<MaterialButton>(R.id.mb_terminate)
         findViewById<TextView>(R.id.mtv_token).text = token
         val coursesRecyclerView = findViewById<RecyclerView>(R.id.rv_list_scores)
         val adapter = ScoresAdapter(this)
@@ -53,6 +60,10 @@ class GameInProgressActivity : AppCompatActivity(), ScoreAdapterListener {
             androidx.lifecycle.Observer { game ->
                 getPlayerMe(game)?.scores?.let { adapter.setScores(it) }
             })
+
+        btnTerminate.setOnClickListener {
+            startActivity(homeActivity)
+        }
     }
 
     fun getPlayerMe(game: Game): Player? {
@@ -67,10 +78,12 @@ class GameInProgressActivity : AppCompatActivity(), ScoreAdapterListener {
 
     override fun isAllEditTextFilled(bool: Boolean) {
         Log.d("GameInProgresActivity", bool.toString())
-        findViewById<MaterialButton>(R.id.mb_submit_score).isEnabled = bool
+        btnTerminate.isEnabled = bool
     }
 
     override fun scoreUpdated(score: Score) {
         vm.updateGame(score.id.toString(), score.score)
     }
+
+
 }
