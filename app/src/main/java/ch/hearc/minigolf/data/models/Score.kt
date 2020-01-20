@@ -10,6 +10,17 @@ data class Score(
     val hole: String,
     var score: Int
 ) : Parcelable {
+
+    companion object CREATOR : Parcelable.Creator<Score> {
+        override fun createFromParcel(parcel: Parcel): Score {
+            return Score(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Score?> {
+            return arrayOfNulls(size)
+        }
+    }
+
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString().toString(),
@@ -22,19 +33,7 @@ data class Score(
         parcel.writeInt(score)
     }
 
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<Score> {
-        override fun createFromParcel(parcel: Parcel): Score {
-            return Score(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Score?> {
-            return arrayOfNulls(size)
-        }
-    }
+    override fun describeContents(): Int = 0
 
     class Deserializer : ResponseDeserializable<Array<Score>> {
         override fun deserialize(content: String): Array<Score>? =

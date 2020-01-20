@@ -17,6 +17,17 @@ data class Game(
     val started: Int,
     val token: String
 ) : Parcelable {
+
+    companion object CREATOR : Parcelable.Creator<Game> {
+        override fun createFromParcel(parcel: Parcel): Game {
+            return Game(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Game?> {
+            return arrayOfNulls(size)
+        }
+    }
+
     constructor(parcel: Parcel) : this(
         parcel.readString().toString(),
         parcel.readInt(),
@@ -48,19 +59,8 @@ data class Game(
             Gson().fromJson(content, Game::class.java)
     }
 
-    override fun describeContents(): Int {
-        return 0
-    }
+    override fun describeContents(): Int = 0
 
-    companion object CREATOR : Parcelable.Creator<Game> {
-        override fun createFromParcel(parcel: Parcel): Game {
-            return Game(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Game?> {
-            return arrayOfNulls(size)
-        }
-    }
 }
 
 data class GameDeserializerUtils(val data: Array<Game>) {

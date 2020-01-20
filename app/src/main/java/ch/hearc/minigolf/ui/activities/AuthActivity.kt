@@ -22,8 +22,11 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var textInputLayoutPassword: TextInputLayout
     private lateinit var buttonLogin: Button
     private lateinit var errorLogin: MaterialTextView
-
     private val intentHome: Intent by lazy { Intent(this, HomeActivity::class.java) }
+
+    /*------------------------------------------------------------------*\
+    |*							   HOOKS
+    \*------------------------------------------------------------------*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,15 +36,15 @@ class AuthActivity : AppCompatActivity() {
         setListeners()
     }
 
+    /*------------------------------------------------------------------*\
+    |*							   METHODES
+    \*------------------------------------------------------------------*/
+
     private fun setUI() {
         textInputLayoutUsername = findViewById(R.id.til_username)
         textInputLayoutPassword = findViewById(R.id.til_password)
         buttonLogin = findViewById(R.id.btn_username_login)
         errorLogin = findViewById(R.id.mtv_error_login)
-    }
-
-    private fun setListeners() {
-        buttonLogin.setOnClickListener { startHomeActivity() }
     }
 
     private fun startHomeActivity() {
@@ -57,11 +60,21 @@ class AuthActivity : AppCompatActivity() {
                     textInputLayoutPassword.editText!!.text.toString()
                 )
             ) {
+
+                UserRepository.getInstance(UserStore()).setGeolocationData(this@AuthActivity)
                 startActivity(intentHome)
             } else {
                 errorLogin.visibility = View.VISIBLE
             }
         }
+    }
+
+    private fun setListeners() {
+        buttonLogin.setOnClickListener { startHomeActivity() }
+    }
+
+    private fun checkAuth(username: String, password: String): Boolean {
+        return UserRepository.getInstance(UserStore()).auth(username, password)
     }
 
     private fun checkInputs(): Boolean {
@@ -78,9 +91,5 @@ class AuthActivity : AppCompatActivity() {
         }
 
         return isInputOk
-    }
-
-    private fun checkAuth(username: String, password: String): Boolean {
-        return UserRepository.getInstance(UserStore()).auth(username, password)
     }
 }
