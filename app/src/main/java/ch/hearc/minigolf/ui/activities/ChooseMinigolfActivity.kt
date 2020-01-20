@@ -14,7 +14,7 @@ import ch.hearc.minigolf.data.models.UserGps
 import ch.hearc.minigolf.data.repositories.GameRepository
 import ch.hearc.minigolf.data.stores.GameStore
 import ch.hearc.minigolf.data.viewmodels.MinigolfsViewModel
-import ch.hearc.minigolf.ui.adapters.MinigolfsRecyclerAdapter
+import ch.hearc.minigolf.ui.adapters.MinigolfsAdapter
 import ch.hearc.minigolf.ui.adapters.OnMinigolfClickListener
 import ch.hearc.minigolf.utilities.InjectorUtils
 import com.google.android.gms.maps.GoogleMap
@@ -80,7 +80,7 @@ class ChooseMinigolfActivity :
         val recyclerView = findViewById<RecyclerView>(R.id.rv_list_minigolfs)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val minigolfAdapter = MinigolfsRecyclerAdapter(this)
+        val minigolfAdapter = MinigolfsAdapter(this)
         recyclerView.adapter = minigolfAdapter
 
         val factory = InjectorUtils.provideMinigolfsViewModelFactory()
