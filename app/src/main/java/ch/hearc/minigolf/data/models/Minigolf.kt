@@ -2,7 +2,6 @@ package ch.hearc.minigolf.data.models
 
 import android.os.Parcel
 import android.os.Parcelable
-import android.util.Log
 import com.github.kittinunf.fuel.core.ResponseDeserializable
 import com.google.gson.Gson
 

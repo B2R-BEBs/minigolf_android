@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Minigolf
-import ch.hearc.minigolf.data.models.UserGps
 import ch.hearc.minigolf.data.repositories.GameRepository
 import ch.hearc.minigolf.data.stores.GameStore
 import ch.hearc.minigolf.data.viewmodels.MinigolfsViewModel
@@ -34,7 +33,6 @@ class ChooseMinigolfActivity :
     \*------------------------------------------------------------------*/
 
     private lateinit var map: GoogleMap
-    private lateinit var user: UserGps
 
     private val coroutineExceptionHandler: CoroutineExceptionHandler =
         CoroutineExceptionHandler { _, throwable ->
@@ -57,12 +55,6 @@ class ChooseMinigolfActivity :
     /*------------------------------------------------------------------*\
     |*							                INITIALIZATION
     \*------------------------------------------------------------------*/
-
-    fun userInitialization() = coroutineScope.launch(Dispatchers.Main) {
-        user = initializeUserAsync(this@ChooseMinigolfActivity)
-        // citiesGraph = initializeGraphAsync(this@MainActivity)
-        // insertUser(citiesGraph, user)
-    }
 
     fun mapInitialization() {
         val mapFragment =
@@ -117,17 +109,6 @@ class ChooseMinigolfActivity :
     |*							                METHODES
     \*------------------------------------------------------------------*/
 
-    // private fun insertUser(graph: Graph, user: UserGps) {
-    //   graph.insertNode(Node(user))
-    // }
-
-    /*------------------------------*\
-    |*			        ASYNC
-    \*------------------------------*/
-
-    private suspend fun initializeUserAsync(activity: Activity): UserGps =
-        withContext(Dispatchers.Default) { UserGps(activity, map) }
-
     override fun onItemClicked(minigolf: Minigolf) {
         if (minigolf.courses.size == 1) {
             intentGameInProgressActivity.putExtra(
@@ -145,7 +126,4 @@ class ChooseMinigolfActivity :
         val token = GameRepository.getInstance(GameStore()).createGame(idCourse)
         return token!!
     }
-
-    // private suspend fun initializeGraphAsync(activity: Activity): Graph =
-    //   withContext(Dispatchers.Default) { Graph(Geocoder(activity)) }
 }
