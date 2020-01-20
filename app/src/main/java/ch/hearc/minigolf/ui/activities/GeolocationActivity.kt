@@ -1,21 +1,17 @@
 package ch.hearc.minigolf.ui.activities
 
-import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.ViewModelProviders
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.UserGps
+import ch.hearc.minigolf.data.viewmodels.MinigolfsViewModel
+import ch.hearc.minigolf.utilities.InjectorUtils
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.Marker
 import kotlinx.coroutines.*
 
-class GeolocationActivity :
-    AppCompatActivity(),
-    OnMapReadyCallback,
-    GoogleMap.OnMarkerClickListener {
+class GeolocationActivity : AppCompatActivity() {
 
     /*------------------------------------------------------------------*\
     |*							                ATTRIBUTES
@@ -35,28 +31,19 @@ class GeolocationActivity :
     private val coroutineScope =
         CoroutineScope(Dispatchers.Main + parentJob + coroutineExceptionHandler)
 
-    /*------------------------------------------------------------------*\
-    |*							                INITIALIZATION
-    \*------------------------------------------------------------------*/
 
-    fun userInitialization() = coroutineScope.launch(Dispatchers.Main) {
-        user = initializeUserAsync(this@GeolocationActivity)
-        // citiesGraph = initializeGraphAsync(this@MainActivity)
-        // insertUser(citiesGraph, user)
-    }
-
-    fun mapInitialization() {
-        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-    }
 
     fun minigolfListInitialization() {
-        // val fragment = supportFragmentManager.findFragmentById(R.id.minigolfs_fragment) as MinigolfsFragment
+        val factory = InjectorUtils.provideMinigolfsViewModelFactory()
+        val viewModel = ViewModelProviders.of(this, factory)
+            .get(MinigolfsViewModel::class.java)
 
-        // val fragment = MinigolfsFragment()
-        // val fragment = supportFragmentManager.findFragmentById(R.id.minigolfs)
-        // val minigolfsFragment = supportFragmentManager.findFragmentById(R.id.minigolfs)
-
+        viewModel.getMinigolfs().observe(this, androidx.lifecycle.Observer { minigolfs ->
+            minigolfs.toList().forEach {
+                val long = it.long.toDouble()
+                val lat = it.lat.toDouble()
+            }
+        })
     }
 
     /*------------------------------------------------------------------*\
@@ -66,40 +53,12 @@ class GeolocationActivity :
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_geolocation)
 
-        mapInitialization()
-        userInitialization()
-        minigolfListInitialization()
     }
-
-    override fun onMapReady(googleMap: GoogleMap) {
-        map = googleMap
-        map.uiSettings.setZoomControlsEnabled(true)
-        map.setOnMarkerClickListener(this)
-        map.isMyLocationEnabled = true
-    }
-
-    override fun onMarkerClick(p0: Marker): Boolean = false
 
     override fun onDestroy() {
         super.onDestroy()
         parentJob.cancel()
     }
 
-    /*------------------------------------------------------------------*\
-    |*							                METHODES
-    \*------------------------------------------------------------------*/
 
-    // private fun insertUser(graph: Graph, user: UserGps) {
-    //   graph.insertNode(Node(user))
-    // }
-
-    /*------------------------------*\
-    |*			        ASYNC
-    \*------------------------------*/
-
-    private suspend fun initializeUserAsync(activity: Activity): UserGps =
-      withContext(Dispatchers.Default) { UserGps(activity, map) }
-
-    // private suspend fun initializeGraphAsync(activity: Activity): Graph =
-    //   withContext(Dispatchers.Default) { Graph(Geocoder(activity)) }
 }

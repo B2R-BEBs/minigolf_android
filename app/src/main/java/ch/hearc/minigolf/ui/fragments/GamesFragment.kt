@@ -2,10 +2,12 @@ package ch.hearc.minigolf.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -47,15 +49,7 @@ class GamesFragment : Fragment(), OnGameClickListener {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         initGames()
-        initMinigolfs()
         return inflaterList
-    }
-
-    private fun initMinigolfs() {
-        val factory = InjectorUtils.provideMinigolfsViewModelFactory()
-        val viewModel = ViewModelProviders.of(this, factory)
-            .get(MinigolfsViewModel::class.java)
-
     }
 
     private fun initGames() {
