@@ -20,6 +20,17 @@ data class Minigolf(
     val phone: String,
     val zipcode: String
 ) : Parcelable {
+
+    companion object CREATOR : Parcelable.Creator<Minigolf> {
+        override fun createFromParcel(parcel: Parcel): Minigolf {
+            return Minigolf(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Minigolf?> {
+            return arrayOfNulls(size)
+        }
+    }
+
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString().toString(),
@@ -55,17 +66,5 @@ data class Minigolf(
         parcel.writeString(zipcode)
     }
 
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<Minigolf> {
-        override fun createFromParcel(parcel: Parcel): Minigolf {
-            return Minigolf(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Minigolf?> {
-            return arrayOfNulls(size)
-        }
-    }
+    override fun describeContents(): Int = 0
 }

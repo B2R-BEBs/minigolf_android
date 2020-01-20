@@ -12,9 +12,24 @@ data class User(
     val role: String,
     val city: String,
     val played: Array<Int>,
-    val created: Array<Int>
+    val created: Array<Int>,
+    var lon: Double,
+    var lat: Double
 ) : Parcelable {
 
+    /*------------------------------------------------------------------*\
+    |*						    Serialization
+    \*------------------------------------------------------------------*/
+
+    companion object CREATOR : Parcelable.Creator<User> {
+        override fun createFromParcel(parcel: Parcel): User {
+            return User(parcel)
+        }
+
+        override fun newArray(size: Int): Array<User?> {
+            return arrayOfNulls(size)
+        }
+    }
 
     constructor(parcel: Parcel) : this(
         parcel.readString().toString(),
@@ -23,7 +38,9 @@ data class User(
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.createIntArray() as Array<Int>,
-        parcel.createIntArray() as Array<Int>
+        parcel.createIntArray() as Array<Int>,
+        parcel.readDouble(),
+        parcel.readDouble()
     )
 
     class Deserializer : ResponseDeserializable<User> {
@@ -37,19 +54,10 @@ data class User(
         parcel.writeString(email)
         parcel.writeString(role)
         parcel.writeString(city)
+        parcel.writeDouble(lon)
+        parcel.writeDouble(lat)
     }
 
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<User> {
-        override fun createFromParcel(parcel: Parcel): User {
-            return User(parcel)
-        }
-
-        override fun newArray(size: Int): Array<User?> {
-            return arrayOfNulls(size)
-        }
-    }
+    override fun describeContents(): Int = 0
 }
+

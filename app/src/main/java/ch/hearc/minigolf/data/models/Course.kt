@@ -15,6 +15,15 @@ data class Course (
     val nbHoles : Int
 ) :Parcelable{
 
+    companion object CREATOR : Parcelable.Creator<Course> {
+        override fun createFromParcel(parcel: Parcel): Course {
+            return Course(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Course?> {
+            return arrayOfNulls(size)
+        }
+    }
 
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
@@ -37,19 +46,6 @@ data class Course (
         parcel.writeInt(nbHoles)
     }
 
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<Course> {
-        override fun createFromParcel(parcel: Parcel): Course {
-            return Course(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Course?> {
-            return arrayOfNulls(size)
-        }
-    }
-
+    override fun describeContents(): Int = 0
 }
 

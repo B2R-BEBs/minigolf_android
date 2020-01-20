@@ -12,6 +12,16 @@ data class Player(
     var scores: List<Score>
 ) : Parcelable {
 
+    companion object CREATOR : Parcelable.Creator<Player> {
+        override fun createFromParcel(parcel: Parcel): Player {
+            return Player(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Player?> {
+            return arrayOfNulls(size)
+        }
+    }
+
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString().toString(),
@@ -29,17 +39,5 @@ data class Player(
         parcel.writeTypedList(scores)
     }
 
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<Player> {
-        override fun createFromParcel(parcel: Parcel): Player {
-            return Player(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Player?> {
-            return arrayOfNulls(size)
-        }
-    }
+    override fun describeContents(): Int = 0
 }
