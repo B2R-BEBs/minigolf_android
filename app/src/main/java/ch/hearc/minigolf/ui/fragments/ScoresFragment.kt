@@ -32,7 +32,7 @@ class ScoresFragment(val token: String) : Fragment() {
         vm = activity?.run {
             ViewModelProviders.of(this, factory)[GamesViewModel::class.java]
         } ?: throw Exception("Invalid Activity")
-        val game = vm.getGame(token)
+        val game = vm.fetchGame(token)
 
         table = inflaterList.findViewById(R.id.tl_result)
         game.observe(this, Observer {
@@ -42,10 +42,10 @@ class ScoresFragment(val token: String) : Fragment() {
         return inflaterList
     }
 
-    override fun onResume() {
-        super.onResume()
-        vm.getGame(token)
-    }
+    // override fun onResume() {
+    //     super.onResume()
+    //     vm.fetchGame(token)
+    // }
 
     private fun initTable(game: Game) {
         table.removeAllViews()

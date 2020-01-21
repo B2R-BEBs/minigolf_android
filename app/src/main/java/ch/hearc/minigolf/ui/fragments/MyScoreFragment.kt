@@ -19,7 +19,6 @@ import ch.hearc.minigolf.data.models.User
 import ch.hearc.minigolf.data.repositories.UserRepository
 import ch.hearc.minigolf.data.stores.UserStore
 import ch.hearc.minigolf.data.viewmodels.GamesViewModel
-import ch.hearc.minigolf.ui.activities.GameInProgressActivity
 import ch.hearc.minigolf.ui.activities.HomeActivity
 import ch.hearc.minigolf.ui.adapters.ScoreAdapterListener
 import ch.hearc.minigolf.ui.adapters.ScoresAdapter
@@ -49,7 +48,7 @@ class MyScoreFragment(val token: String) : Fragment(), ScoreAdapterListener {
         vm = activity?.run {
             ViewModelProviders.of(this, factory)[GamesViewModel::class.java]
         } ?: throw Exception("Invalid Activity")
-        game = vm.getGame(token)
+        game = vm.fetchGame(token)
         btnTerminate = inflaterList.findViewById(R.id.mb_terminate)
 
         val scoresRecyclerView = inflaterList.findViewById<RecyclerView>(R.id.rv_list_scores)
