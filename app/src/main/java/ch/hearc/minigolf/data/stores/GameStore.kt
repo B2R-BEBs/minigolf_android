@@ -1,5 +1,6 @@
 package ch.hearc.minigolf.data.stores
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ch.hearc.minigolf.data.models.Game
@@ -21,6 +22,7 @@ class GameStore {
     }
 
     fun fetch(): LiveData<Array<Game>> {
+        Log.d("TEST", "Fetching all games!")
         Fuel.get(HttpManager.routes.games(getUserId()))
             .responseObject(gameDeserializer) { _, _, result ->
                 val (data, err) = result
@@ -30,6 +32,7 @@ class GameStore {
     }
 
     fun fetch(token: String): LiveData<Game> {
+        Log.d("TEST", "Fetching game with token")
         Fuel.get(HttpManager.routes.gameToken(token))
             .responseObject(Game.Deserializer()) { _, _, result ->
                 val (data, err) = result

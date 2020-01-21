@@ -2,7 +2,6 @@ package ch.hearc.minigolf.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,7 +49,7 @@ class GamesFragment : Fragment(), OnGameClickListener {
             ViewModelProviders.of(this, factory)[GamesViewModel::class.java]
         } ?: throw Exception("Invalid Activity")
 
-        games = vm.getGames()
+        games = vm.fetchGames()
 
 
         btnStartGame = inflaterList.findViewById<MaterialButton>(R.id.mb_start_game)

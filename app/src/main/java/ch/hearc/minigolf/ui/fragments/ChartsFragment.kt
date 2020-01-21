@@ -56,9 +56,7 @@ class ChartsFragment :
 
 
 
-        vm.getGames().observe(this, Observer { games ->
-            setChart(getMyScores(games))
-        })
+        vm.getGames().observe(this, Observer { setChart(getMyScores(it)) })
 
         inflaterGraph.findViewById<FrameLayout>(R.id.fl_chart).addView(chart)
 
