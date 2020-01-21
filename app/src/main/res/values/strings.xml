@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Minigolf</string>
+    <string name="app_name">iGolf</string>
 
     <!-- activity_auth -->
     <string name="hint_username">Nom d\'utilisateur</string>

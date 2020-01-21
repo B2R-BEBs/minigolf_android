@@ -26,7 +26,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import kotlinx.android.synthetic.main.fragment_minigolfs.*
 import kotlinx.coroutines.*
 
 class ChooseMinigolfActivity :
@@ -89,15 +88,9 @@ class ChooseMinigolfActivity :
         viewModel.getMinigolfs().observe(this, androidx.lifecycle.Observer { minigolfs ->
                 minigolfs?.let { minigolfAdapter.submitList(minigolfs.toList()) }
                 pinClosestMinigolf()
-                // hilightClosestMinigolf()
             }
         )
-
     }
-
-    // private fun hilightClosestMinigolf() {
-    //     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    // }
 
     fun pinClosestMinigolf() {
         val user = UserRepository.getInstance(UserStore()).getUser().value
@@ -108,7 +101,7 @@ class ChooseMinigolfActivity :
             .title(closest.name)
             .snippet("Closest minigolf.")
         map.addMarker(minigolfMarker)
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(user!!.lat, user.lon), 18f))
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(user!!.lat, user.lon), 17f))
 
     }
 

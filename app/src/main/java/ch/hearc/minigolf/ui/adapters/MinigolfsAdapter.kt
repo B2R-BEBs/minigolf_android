@@ -18,7 +18,7 @@ class MinigolfsAdapter(private val minigolfClickListener: OnMinigolfClickListene
     private var items: List<Minigolf> = emptyList()
 
 
-    class MinigolfViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MinigolfViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val item = itemView
         val name: TextView = item.tv_minigolf_name
@@ -27,6 +27,15 @@ class MinigolfsAdapter(private val minigolfClickListener: OnMinigolfClickListene
         fun bind(minigolf: Minigolf, clickListener: OnMinigolfClickListener) {
             name.text = minigolf.name
             address.text = minigolf.address
+
+            val purple = item.resources.getColor(R.color.cellColor)
+            val default = item.resources.getColor(R.color.design_default_color_background)
+
+            if (minigolf == items.first()) {
+                item.cv_card.setCardBackgroundColor(purple)
+            } else {
+                item.cv_card.setCardBackgroundColor(default)
+            }
 
             item.setOnClickListener {
                 clickListener.onItemClicked(minigolf)
