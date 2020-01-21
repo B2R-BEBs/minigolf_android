@@ -13,20 +13,36 @@
         android:supportsRtl="true"
         android:theme="@style/Material"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.activities.ChooseCourseActivity" />
+        <activity android:name=".ui.activities.AboutActivity">
+
+        </activity>
+        <activity
+            android:name=".ui.activities.ChooseCourseActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".ui.activities.GameInProgressActivity" />
-        <activity android:name=".ui.activities.CreateJoinGameActivity" />
+        <activity
+            android:name=".ui.activities.GameInProgressActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activities.CreateJoinGameActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
         <activity android:name=".ui.activities.GameActivity" />
-        <activity android:name=".ui.activities.ChooseMinigolfActivity" />
-        <activity android:name=".ui.activities.HomeActivity">
-
-        </activity>
-        <activity android:name=".ui.activities.AuthActivity">
+        <activity
+            android:name=".ui.activities.ChooseMinigolfActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.activities.HomeActivity"></activity>
+        <activity
+            android:name=".ui.activities.AuthActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

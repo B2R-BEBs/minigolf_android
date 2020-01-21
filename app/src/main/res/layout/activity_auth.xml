@@ -5,14 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/main_padding"
-    android:gravity="center_vertical"
     android:orientation="vertical"
     tools:context=".ui.activities.AuthActivity">
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/mtv_error_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_logo"
         android:layout_marginBottom="20dp"
         android:text="@string/error_login"
         android:textAlignment="center"
@@ -36,7 +42,7 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             android:inputType="textEmailAddress"
-            android:text="nath@test.com"/>
+            android:text="nath@test.com" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,7 +63,7 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:text="toptal00"/>
+            android:text="toptal00" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,4 +83,13 @@
         android:layout_alignParentRight="true"
         android:text="@string/login"
         tools:ignore="RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/tv_link_create"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_username_login"
+        android:layout_marginTop="10dp"
+        android:text="@string/link_create"
+        android:textSize="15sp" />
 </RelativeLayout>

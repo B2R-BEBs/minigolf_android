@@ -21,17 +21,27 @@
             android:id="@+id/tv_minigolf_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/iv_icon"
             tools:text="Minigolf name" />
 
         <TextView
             android:id="@+id/tv_minigolf_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/iv_icon"
             android:layout_below="@id/tv_minigolf_name"
             android:layout_marginEnd="10dp"
-
             tools:text="Minigolf address" />
 
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+             />
 
     </RelativeLayout>
 
