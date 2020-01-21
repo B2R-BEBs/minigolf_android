@@ -44,6 +44,11 @@ class ScoresFragment(val token: String) : Fragment() {
         return inflaterList
     }
 
+    override fun onResume() {
+        super.onResume()
+        vm.getGame(token)
+    }
+
     private fun initTable(game: Game) {
         table.removeAllViews()
 

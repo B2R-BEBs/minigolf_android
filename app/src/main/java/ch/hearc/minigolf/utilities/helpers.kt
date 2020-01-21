@@ -19,4 +19,5 @@ fun distance(a: LatLng, b: LatLng): Double {
     return Math.acos(t1 + t2 + t3) * radius
 }
 
-fun mToKm(value: Double) = "%.2f".format(value / 1000).toDouble()
+//fun mToKm(value: Double) = "%.2f".format(value / 1000).toDouble()
+fun mToKm(value: Double) = value
