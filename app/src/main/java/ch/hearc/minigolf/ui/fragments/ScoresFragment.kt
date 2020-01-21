@@ -8,9 +8,7 @@ import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import ch.hearc.minigolf.R
 import ch.hearc.minigolf.data.models.Game
@@ -124,8 +122,6 @@ class ScoresFragment(val token: String) : Fragment() {
 
         return tableRow
     }
-
-
 }
 
 
