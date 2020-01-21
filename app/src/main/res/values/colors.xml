@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="barchart">@color/design_default_color_primary</color>
+    <color name="barchart1">#853ff4</color>
+    <color name="barchart2">#a876f7</color>
+    <color name="barchart3">#cdb1f9</color>
+
     <color name="lightGrey">#eeeeee</color>
     <color name="cellColor">#cdb1f9</color>
 </resources>

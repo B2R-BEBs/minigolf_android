@@ -19,6 +19,7 @@ import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.formatter.ValueFormatter
 
 class ChartsFragment :
     Fragment() {
@@ -56,6 +57,7 @@ class ChartsFragment :
 
 
 
+
         vm.getGames().observe(this, Observer { setChart(getMyScores(it)) })
 
         inflaterGraph.findViewById<FrameLayout>(R.id.fl_chart).addView(chart)
@@ -72,9 +74,11 @@ class ChartsFragment :
         }
 
         val dataSet = BarDataSet(entries, "Scores")
-        dataSet.setColors(intArrayOf(R.color.barchart), context)
+        dataSet.setColors(intArrayOf(R.color.barchart, R.color.barchart1, R.color.barchart2, R.color.barchart3), context)
 
         val barData = BarData(dataSet)
+        barData.barWidth = 1f
+        barData.setValueFormatter(Formater())
 
         chart.data = barData
         chart.invalidate()
@@ -94,5 +98,11 @@ class ChartsFragment :
         }
 
         return myScores.asReversed().toIntArray()
+    }
+
+    class Formater : ValueFormatter() {
+        override fun getFormattedValue(value: Float): String? {
+            return "" + value.toInt()
+        }
     }
 }
