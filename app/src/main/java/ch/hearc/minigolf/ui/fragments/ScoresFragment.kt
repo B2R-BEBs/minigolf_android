@@ -1,6 +1,8 @@
 package ch.hearc.minigolf.ui.fragments
 
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,11 +17,16 @@ import ch.hearc.minigolf.data.models.Game
 import ch.hearc.minigolf.data.viewmodels.GamesViewModel
 import ch.hearc.minigolf.utilities.InjectorUtils
 import ch.hearc.minigolf.utilities.dataStructures.Cell
+import java.util.*
+import kotlin.concurrent.schedule
+import kotlin.concurrent.timer
 
 class ScoresFragment(val token: String) : Fragment() {
 
     private lateinit var table: TableLayout
     private lateinit var vm: GamesViewModel
+    private lateinit var timer: CountDownTimer
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,13 +46,31 @@ class ScoresFragment(val token: String) : Fragment() {
             initTable(it)
         })
 
+        timer = object : CountDownTimer(100_000, 5_000) {
+            override fun onTick(millisUntilFinished: Long) {
+                vm.fetchGame(token)
+            }
+
+            override fun onFinish() {
+                timer.start()
+            }
+        }
+
         return inflaterList
     }
 
-    // override fun onResume() {
-    //     super.onResume()
-    //     vm.fetchGame(token)
-    // }
+    override fun onResume() {
+        super.onResume()
+        Timer("init", false).schedule(200) {
+            vm.fetchGame(token)
+            timer.start()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        timer.cancel()
+    }
 
     private fun initTable(game: Game) {
         table.removeAllViews()

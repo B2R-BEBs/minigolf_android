@@ -77,9 +77,9 @@ class GameStore {
 
     fun update(score_id: String, score: Int) {
         val bodyJson = """ { "id": "$score_id", "score": "$score" } """
-        val login = Fuel.post(HttpManager.routes.scoreUpdate).body(bodyJson)
-        login.appendHeader("Content-Type", "application/json; utf-8; */*")
-        login.responseObject(Score.Deserializer()) { _, _, result ->
+        val request = Fuel.post(HttpManager.routes.scoreUpdate).body(bodyJson)
+        request.appendHeader("Content-Type", "application/json; utf-8; */*")
+        request.responseObject(Score.Deserializer()) { _, _, result ->
             val (data, err) = result
         }
     }
