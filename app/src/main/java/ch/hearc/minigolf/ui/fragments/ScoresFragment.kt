@@ -147,8 +147,6 @@ class ScoresFragment(val token: String) : Fragment() {
 
         return tableRow
     }
-
-
 }
 
 

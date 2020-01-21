@@ -39,5 +39,6 @@
         <item quantity="one">C\'est à vous après %1d personne</item>
         <item quantity="other">C\'est à vous après %1d personnes</item>
     </plurals>
+    <string name="hole_number">Trou N°%1$s</string>
 
 </resources>

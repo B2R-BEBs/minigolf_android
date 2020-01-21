@@ -20,6 +20,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@id/til_score"
+            android:textSize="@dimen/title"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
             tools:text="Hole name" />
 
         <com.google.android.material.textfield.TextInputLayout
