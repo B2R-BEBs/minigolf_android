@@ -13,8 +13,8 @@ data class User(
     val city: String,
     val played: Array<Int>,
     val created: Array<Int>,
-    var lon: Double,
-    var lat: Double
+    var lat: Double,
+    var lon: Double
 ) : Parcelable {
 
     /*------------------------------------------------------------------*\
@@ -54,10 +54,14 @@ data class User(
         parcel.writeString(email)
         parcel.writeString(role)
         parcel.writeString(city)
-        parcel.writeDouble(lon)
         parcel.writeDouble(lat)
+        parcel.writeDouble(lon)
     }
 
     override fun describeContents(): Int = 0
+
+    override fun toString(): String {
+        return "User(id=$id, name='$name', city='$city', lat=$lat, lon=$lon)"
+    }
 }
 

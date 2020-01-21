@@ -52,6 +52,7 @@ class GamesFragment : Fragment(), OnGameClickListener {
 
         games = vm.getGames()
 
+
         btnStartGame = inflaterList.findViewById<MaterialButton>(R.id.mb_start_game)
         rvGames = inflaterList.findViewById(R.id.rv_list_result)
 

@@ -2,7 +2,6 @@ package ch.hearc.minigolf.data.models
 
 import android.os.Parcel
 import android.os.Parcelable
-import android.util.Log
 import com.github.kittinunf.fuel.core.ResponseDeserializable
 import com.google.gson.Gson
 
@@ -15,8 +14,9 @@ data class Minigolf(
     val description: String,
     val email: String,
     val image: String,
-    val lat: Float,
-    val long: Float,
+    val lat: Double,
+    val long: Double,
+    var distance: Double,
     val phone: String,
     val zipcode: String
 ) : Parcelable {
@@ -40,16 +40,17 @@ data class Minigolf(
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
-        parcel.readFloat(),
-        parcel.readFloat(),
+        parcel.readDouble(),
+        parcel.readDouble(),
+        parcel.readDouble(),
         parcel.readString().toString(),
         parcel.readString().toString()
     )
 
     class Deserializer : ResponseDeserializable<Array<Minigolf>> {
-            override fun deserialize(content: String): Array<Minigolf>? =
-                Gson().fromJson(content, Array<Minigolf>::class.java)
-        }
+        override fun deserialize(content: String): Array<Minigolf>? =
+            Gson().fromJson(content, Array<Minigolf>::class.java)
+    }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
@@ -60,11 +61,17 @@ data class Minigolf(
         parcel.writeString(description)
         parcel.writeString(email)
         parcel.writeString(image)
-        parcel.writeFloat(lat)
-        parcel.writeFloat(long)
+        parcel.writeDouble(lat)
+        parcel.writeDouble(long)
+        parcel.writeDouble(distance)
         parcel.writeString(phone)
         parcel.writeString(zipcode)
     }
 
     override fun describeContents(): Int = 0
+    override fun toString(): String {
+        return "Minigolf(id=$id, name='$name', city='$city', distance=$distance)"
+    }
+
+
 }

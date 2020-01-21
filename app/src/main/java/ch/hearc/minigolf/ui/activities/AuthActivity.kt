@@ -18,6 +18,8 @@ class AuthActivity : AppCompatActivity() {
         private const val TAG = "AuthActivity"
     }
 
+    private val user = UserRepository.getInstance(UserStore())
+
     private lateinit var textInputLayoutUsername: TextInputLayout
     private lateinit var textInputLayoutPassword: TextInputLayout
     private lateinit var buttonLogin: Button
@@ -60,8 +62,7 @@ class AuthActivity : AppCompatActivity() {
                     textInputLayoutPassword.editText!!.text.toString()
                 )
             ) {
-
-                UserRepository.getInstance(UserStore()).setGeolocationData(this@AuthActivity)
+                user.setGeolocationData(this@AuthActivity)
                 startActivity(intentHome)
             } else {
                 errorLogin.visibility = View.VISIBLE
@@ -74,7 +75,7 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun checkAuth(username: String, password: String): Boolean {
-        return UserRepository.getInstance(UserStore()).auth(username, password)
+        return user.auth(username, password)
     }
 
     private fun checkInputs(): Boolean {
