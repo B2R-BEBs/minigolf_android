@@ -35,8 +35,7 @@ class ScoresAdapter(val scoreAdapterListener: ScoreAdapterListener) :
 
         fun bind(score: Score) {
             scoreEditText.setText(score.score.toString())
-            hole.text = score.hole
-
+            hole.text =  hole.resources.getString(R.string.hole_number, score.hole)
         }
     }
 

@@ -12,6 +12,7 @@ import ch.hearc.minigolf.data.models.Game
 import ch.hearc.minigolf.data.models.User
 import ch.hearc.minigolf.data.repositories.UserRepository
 import ch.hearc.minigolf.data.stores.UserStore
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -19,6 +20,8 @@ class GamesAdapter(val itemClickListener: OnGameClickListener) :
     RecyclerView.Adapter<GamesAdapter.ViewHolder>() {
 
     private var games: List<Game> = emptyList()
+    private val dateFormatIn = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    private val dateFormatOut = SimpleDateFormat("dd.MM.yyy HH:mm")
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -32,7 +35,7 @@ class GamesAdapter(val itemClickListener: OnGameClickListener) :
 
             scoresText.text =
                 item.resources.getQuantityString(R.plurals.nb_of_points, score, score)
-            date.text = getFormatedDate(game.date)
+            date.text = dateFormatOut.format(dateFormatIn.parse(game.date)!!)
             location.text = game.minigolf
             item.setOnClickListener {
                 clickListener.onGameClicked(game)
