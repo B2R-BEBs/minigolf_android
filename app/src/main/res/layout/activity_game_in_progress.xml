@@ -36,22 +36,17 @@
             tools:text="ABC123" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_list_scores"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_game_in_progress"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/mb_terminate"
-        android:layout_below="@id/ll_token"
-        tools:listitem="@layout/item_score" />
+        android:layout_below="@id/ll_token">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/mb_terminate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"
-        android:enabled="false"
-        android:padding="@dimen/paddingBigButton"
-        android:text="@string/terminate" />
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tl_game_in_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top" />
+    </androidx.viewpager.widget.ViewPager>
 
 </RelativeLayout>

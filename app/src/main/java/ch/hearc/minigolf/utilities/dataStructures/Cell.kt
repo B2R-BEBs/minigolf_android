@@ -9,7 +9,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.setPadding
 import ch.hearc.minigolf.R
 
-class Cell(context: Context, text: String, cellType: CELL_COLOR = CELL_COLOR.WHITE) :
+class Cell(context: Context?, text: String, cellType: CELL_COLOR = CELL_COLOR.WHITE) :
     TextView(context) {
 
     companion object {
