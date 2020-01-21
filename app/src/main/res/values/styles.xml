@@ -3,7 +3,6 @@
     <!-- Base application theme. -->
     <style name="Material" parent="Theme.MaterialComponents.Light">
         <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
-        <item name="android:textColorPrimary">@color/quantum_white_100</item>
     </style>
 
 

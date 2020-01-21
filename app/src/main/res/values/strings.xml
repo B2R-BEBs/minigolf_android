@@ -40,6 +40,6 @@
         <item quantity="other">C\'est à vous après %1d personnes</item>
     </plurals>
     <string name="hole_number">Trou N°%1$s</string>
-    <string name="link_create"><a href="https://swiped.srvz-webapp.he-arc.ch/minigolfs">Pas encore de compte ?</a></string>
+    <string name="link_create"><a href="https://swiped.srvz-webapp.he-arc.ch">Pas encore de compte ?</a></string>
 
 </resources>
