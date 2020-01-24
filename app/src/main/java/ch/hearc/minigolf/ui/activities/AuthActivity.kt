@@ -28,6 +28,8 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var errorLogin: MaterialTextView
     private lateinit var linkCreate: TextView
     private val intentHome: Intent by lazy { Intent(this, HomeActivity::class.java) }
+    private val intentAbout: Intent by lazy { Intent(this, AboutActivity::class.java) }
+
 
     /*------------------------------------------------------------------*\
     |*							   HOOKS
@@ -77,6 +79,7 @@ class AuthActivity : AppCompatActivity() {
 
     private fun setListeners() {
         buttonLogin.setOnClickListener { startHomeActivity() }
+        findViewById<TextView>(R.id.tv_about).setOnClickListener { startActivity(intentAbout) }
     }
 
     private fun checkAuth(username: String, password: String): Boolean {

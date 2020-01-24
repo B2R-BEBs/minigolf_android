@@ -41,5 +41,6 @@
     </plurals>
     <string name="hole_number">Trou N°%1$s</string>
     <string name="link_create"><a href="https://swiped.srvz-webapp.he-arc.ch">Pas encore de compte ?</a></string>
+    <string name="about">À propos</string>
 
 </resources>

@@ -92,4 +92,18 @@
         android:layout_marginTop="10dp"
         android:text="@string/link_create"
         android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_about"
+        android:textColor="@color/barchart"
+        android:padding="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="@string/about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_about"/>
 </RelativeLayout>
