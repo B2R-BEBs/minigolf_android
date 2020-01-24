@@ -31,6 +31,7 @@ Après s'être authentifié, l'utilisateur arrive sur la liste de toutes ses par
 ![](https://i.imgur.com/qZMbZVD.png)
 
 Il peut sélectionner une partie pour avoir un récapitulatif et peut revenir à la liste en appuyant sur le bouton retour.
+
 ![](https://i.imgur.com/a0dXCmA.png)
 
 En allant dans l'onglet "graphique", il peut visionné les statistiques de ses parties. chaque barre correspond à une partie et le nombre de coups joués.
