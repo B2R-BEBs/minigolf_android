@@ -1,21 +1,28 @@
-# Description
-Le but de cette application est de s'affranchir des fiches papiers lors de parties de minigolf.
-Dans un second temps l'application sera capable de garder une trace des différentes parties de minigolf effectuées afin de ressortir des statistiques.
+# Projet Android: iGolf
+Le but de cette application est de moderniser la façon de jouer au minigolf en s'affranchissant des fiches papiers lors de parties de minigolf.
+L'application fonctionne conjointement à l'application faite pour le cours de Web.
 
-Site web [IGolf](https://swiped.srvz-webapp.he-arc.ch/)
+* Site web [IGolf](https://swiped.srvz-webapp.he-arc.ch/)
+* Dépôt du site web [github](https://github.com/HE-Arc/Minigolf)
 
-dépôt du site web [github](https://github.com/HE-Arc/Minigolf)
+## Documentation
+Les documents liés au projet sont dans le dépôts dans le dossier "Documents".
 
-# Documentation
-Les documents liés au projet sont dans le dépôts dans le dossier "Documents"
+## How to
 
-# Manuel utilisateur
-## Prérequis
+### Prérequis
 L'application a besoin d'avoir la permission d'utiliser la localisation pour pouvoir donner la position la plus proche d'un minigolf.
 
 ![](https://i.imgur.com/gS5jgEd.png)
 
-## Utilisation
+### Installation
+* Cloner le dépot
+* Charger le projet dans Android Studio
+* Build & run
+* Possibilité de lancer en émulateur et smartphone en même temps pour tester une partie à plusieurs.
+* Apk fournit dans le dossier /apk
+
+### Utilisation
 
 Au lancement, l'application demande une authentification à l'utilisateur. L'email et le mot de passe doivent être entrés. Si l'utilisateur n'a pas de compte, un lien "Pas encore de compte ?" le revoie sur la page web de IGolf où il peut en faire un (Désactivé sur le site web).
 
@@ -45,7 +52,7 @@ Dans l'onglet "liste" un bouton "Commencer une nouvelle partie" permet soit de r
 
 ![](https://i.imgur.com/HrqT201.png)
 
-Pour la création d'une partie, l'application propose tous les minigolfs disponible et trie ces derniers en fonction de leur proximité avec la position actuelle de l'utilisateur. Une carte affiche le minigolf le plus proche ainsi que la position de l'utilisateur. 
+Pour la création d'une partie, l'application propose tous les minigolfs disponible et trie ces derniers en fonction de leur proximité avec la position actuelle de l'utilisateur. Une carte affiche le minigolf le plus proche ainsi que la position de l'utilisateur.
 
 ![](https://i.imgur.com/D0pNQXX.png)
 
@@ -67,15 +74,7 @@ Toute les parties sont enregistrées et sont synchronisées avec le serveur web.
 
 ![](https://i.imgur.com/XIJDsQN.png)
 
-### Installation
-Lancer l'application depuis Android Studio.
-
-Possibilité de lancer en émulateur et smartphone en même temps pour tester une partie à plusieurs.
-
-Aucun APK n'est actuellement disponible
-
-
-# Bugs connus
+## Bugs connus
 
 * Retour en arrière pendant qu'une partie est active suivi d'une nouvelle création de partie fait crash l'application.
 * Si deux (ou plus) joueurs se connectent au même moment l'application de l'hôte crash.
