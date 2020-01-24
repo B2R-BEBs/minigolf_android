@@ -73,7 +73,7 @@ Possibilité de lancer en émulateur et smartphone en même temps pour tester un
 Aucun APK n'est actuellement disponible
 
 
-# Bugs connu
+# Bugs connus
 
 * Retour en arrière pendant qu'une partie est active suivi d'une nouvelle création de partie fait crash l'application.
 * Si deux (ou plus) joueurs se connectent au même moment l'application de l'hôte crash.
