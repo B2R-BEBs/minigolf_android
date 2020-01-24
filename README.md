@@ -68,7 +68,6 @@ Toute les parties sont enregistrées et sont synchronisées avec le serveur web.
 ![](https://i.imgur.com/XIJDsQN.png)
 
 ### Installation
-Pour l'installation de l'application, cloner le dépôt git https://github.com/rihsdavid/minigolf_android.
 Lancer l'application depuis Android Studio.
 
 Possibilité de lancer en émulateur et smartphone en même temps pour tester une partie à plusieurs.
