@@ -3,7 +3,8 @@ Le but de cette application est de s'affranchir des fiches papiers lors de parti
 Dans un second temps l'application sera capable de garder une trace des différentes parties de minigolf effectuées afin de ressortir des statistiques.
 
 Site web [IGolf](https://swiped.srvz-webapp.he-arc.ch/)
-dépôt du site web https://github.com/HE-Arc/Minigolf
+
+dépôt du site web [github](https://github.com/HE-Arc/Minigolf)
 
 # Manuel utilisateur
 ## Prérequis
