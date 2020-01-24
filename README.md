@@ -6,6 +6,9 @@ Site web [IGolf](https://swiped.srvz-webapp.he-arc.ch/)
 
 dépôt du site web [github](https://github.com/HE-Arc/Minigolf)
 
+# Documentation
+Les documents liés au projet sont dans le dépôts dans le dossier "Documents"
+
 # Manuel utilisateur
 ## Prérequis
 L'application a besoin d'avoir la permission d'utiliser la localisation pour pouvoir donner la position la plus proche d'un minigolf.
