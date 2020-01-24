@@ -42,7 +42,6 @@ class ChartsFragment :
             ViewModelProviders.of(this, factory)[GamesViewModel::class.java]
         } ?: throw Exception("Invalid Activity")
 
-
         chart = BarChart(activity)
         chart.setScaleEnabled(false)
         chart.xAxis.setDrawLabels(false)
@@ -53,10 +52,6 @@ class ChartsFragment :
         chart.axisRight.setDrawAxisLine(false)
         chart.description.isEnabled  = false
         chart.legend.isEnabled = false
-
-
-
-
 
         vm.getGames().observe(this, Observer { setChart(getMyScores(it)) })
 
