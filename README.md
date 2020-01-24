@@ -2,9 +2,13 @@
 Le but de cette application est de s'affranchir des fiches papiers lors de parties de minigolf.
 Dans un second temps l'application sera capable de garder une trace des différentes parties de minigolf effectuées afin de ressortir des statistiques.
 
+Site web [IGolf](https://swiped.srvz-webapp.he-arc.ch/)
+dépôt du site web https://github.com/HE-Arc/Minigolf
+
 # Manuel utilisateur
 ## Prérequis
 L'application a besoin d'avoir la permission d'utiliser la localisation pour pouvoir donner la position la plus proche d'un minigolf.
+
 ![](https://i.imgur.com/gS5jgEd.png)
 
 ## Utilisation
